@@ -1,3 +1,6 @@
-# test
+# Wiki Intro
 
-this is the [[folder/other]] link
+Welcome to the SourceBox wiki!
+
+Important links:
+[QScript][QScript/Introduction]

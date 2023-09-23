@@ -2,11 +2,14 @@ import markdown2
 import sys
 import os
 import re
+import shutil
 
 mark = markdown2.Markdown()
 
 src = os.path.dirname(os.path.realpath(__file__))+"/src/"
 dst = os.path.dirname(os.path.realpath(__file__))+"/dst/"
+shutil.rmtree(dst)
+os.mkdir(dst)
 with open("template.html","r") as f:
     template = f.read()
 
@@ -33,5 +36,10 @@ for root, subdirs, files in os.walk(src):
                 converted = mark.convert(f.read())
                 links = re.findall(r'\[\[.+\]\]', converted)
                 for link in links:
-                    converted = converted.replace(link, "<a href=\""+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</a>")
+                    converted = converted.replace(link, "<a href=\"/wiki/"+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</a>")
+                links = re.findall(r'\[.+\]\[.+\]',converted)
+                for link in links:
+                    name = link[1:].split("]",1)[0]
+                    href = link[1:].split("[",1)[1].split("]",1)[0]
+                    converted = converted.replace(link, "<a href=\"/wiki/"+href+".html\">"+name+"</a>")
                 r.write(template.replace("@CONTENT",converted))
