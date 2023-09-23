@@ -25,6 +25,22 @@ Once you are done with defining your class, you call the `finish()` function lik
 
 `my_class` will turn into a normal class where you cannot add any more variables or functions to it. In other words, `my_class` will get "baked" and you cannot add any more ingredients to it.
 
+The `class()` function accepts another class as a parameter which will "inherit" the other class.
+
+In simple terms, every function and variable from the other class, will be copied into yours, without having to specify them all over again.
+
+    another_class = class(my_class) -- Inherits from my_class
+
+    another_class.MyVar = 20.0 -- Overrides the built-in variable
+    function another_class.NewFunc(self,b)
+        return self.MyVar-b
+    end
+
+    finish(another_class) -- Finishes it
+
+    another_class.MyFunc(5) -- Will return 25
+    another_class.NewFunc(5) -- Will return 15
+
 ---
 
 [Next ->][QScript/Lua/Objects]

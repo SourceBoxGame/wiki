@@ -66,6 +66,23 @@ end
 
 <p><code>my_class</code> will turn into a normal class where you cannot add any more variables or functions to it. In other words, <code>my_class</code> will get "baked" and you cannot add any more ingredients to it.</p>
 
+<p>The <code>class()</code> function accepts another class as a parameter which will "inherit" the other class.</p>
+
+<p>In simple terms, every function and variable from the other class, will be copied into yours, without having to specify them all over again.</p>
+
+<pre><code>another_class = class(my_class) -- Inherits from my_class
+
+another_class.MyVar = 20.0 -- Overrides the built-in variable
+function another_class.NewFunc(self,b)
+    return self.MyVar-b
+end
+
+finish(another_class) -- Finishes it
+
+another_class.MyFunc(5) -- Will return 25
+another_class.NewFunc(5) -- Will return 15
+</code></pre>
+
 <hr />
 
 <p><a href="/wiki/QScript/Lua/Objects.html">Next -></a></p>
