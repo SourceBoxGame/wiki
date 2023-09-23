@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<script>
+    const documentlist = ['index.html', 'folder/other.html']
+    const namelist = ['test', 'Other']
+
+    function updateSearch() {
+        searchtext = document.getElementById("searchbox").value.toLowerCase();
+        var res = [];
+        var searchresults = document.getElementById("searchresults")
+        searchresults.innerHTML = ""
+        if(searchtext === "")
+            return;
+        for (var i = 0; i < namelist.length; i++) 
+        {
+            if(!namelist[i].toLowerCase().includes(searchtext)) continue;
+            var searchelement = document.createElement("li");
+            var link = document.createElement("a");
+            searchelement.appendChild(link);
+            link.setAttribute("href", documentlist[i]);
+            link.innerHTML = namelist[i];
+            searchresults.appendChild(searchelement);
+        }
+        
+        
+        
+    }
+</script>
+<div style="position:fixed; display:block; top: 0px; left: 0px; height:100%; width:200px;border-color: black; border-width: 1px; border-style:solid;">
+    <input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" style="width:192px;">
+    <nav>
+        <ul id="searchresults">
+        </ul>
+    </nav>
+</div>
+<div style="margin-left:200px;">
+<h1>test</h1>
+
+<p>this is the <a href="folder/other.html">other</a> link</p>
+
+</div>
