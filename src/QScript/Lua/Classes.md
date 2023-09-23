@@ -1,6 +1,10 @@
 # Lua Classes
 
-If you want to create a class, you first call the `class()` function like this:
+Let's start with an analogy. Imagine you want to make star-shaped cookies. You could of course, manually cut the baked cookie and then be left with a mess, or you could use a cookie cutter before baking it. In this analogy, the cookie is an object, the manual cutting method is using tables, and the cookie cutter is a class.
+
+Before explaining what an object is, let's first take a look at how you even make a class.
+
+To create a class, you first call the `class()` function like this:
 
 
     my_class = class() -- Creates a class creator
@@ -31,15 +35,14 @@ In simple terms, every function and variable from the other class, will be copie
 
     another_class = class(my_class) -- Inherits from my_class
 
-    another_class.MyVar = 20.0 -- Overrides the built-in variable
-    function another_class.NewFunc(self,b)
+    another_class.MyVar = 20.0 -- Changes the existing variable
+    function another_class.NewFunc(self,b) -- Makes a new function
         return self.MyVar-b
     end
 
     finish(another_class) -- Finishes it
 
-    another_class.MyFunc(5) -- Will return 25
-    another_class.NewFunc(5) -- Will return 15
+We can now move on to objects.
 
 ---
 

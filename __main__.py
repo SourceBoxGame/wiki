@@ -33,7 +33,13 @@ for root, subdirs, files in os.walk(src):
         fpath = os.path.join(root, file)
         with open(fpath,"r") as f:
             with open(dst+fpath[len(src):].replace(".md",".html"), "w") as r:
-                converted = mark.convert(f.read())
+                rawmarkdown = f.read().replace("\r\n","\n")
+                smalls = re.findall(r"^\S+\n[(    )\t]",rawmarkdown,re.MULTILINE)
+                for small in smalls:
+                    smallstring = small.strip()
+                    whitespace = small[len(smallstring):]
+                    rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:16px;\">"+smallstring+"</small>\n"+whitespace)
+                converted = mark.convert(rawmarkdown)
                 links = re.findall(r'\[\[.+\]\]', converted)
                 for link in links:
                     converted = converted.replace(link, "<a href=\"/wiki/"+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</a>")

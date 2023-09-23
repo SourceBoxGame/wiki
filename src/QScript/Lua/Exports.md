@@ -23,6 +23,8 @@ Exporting classes and objects works the same way.
     export(my_class)
     export(my_object)
 
+That's great but now what can you do with the exported variables? That's the thing. You don't! Other scripts use the exported variables. See how and why in the next page.
+
 ---
 
 [<- Prev][QScript/Lua/Objects] |

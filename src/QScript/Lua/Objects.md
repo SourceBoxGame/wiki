@@ -14,6 +14,8 @@ To create a new object, simply call the `object()` function with a class, and it
 
     my_object = object(my_class) -- Make the object
 
+Why would you use an object instead of a table? Well, you'll soon see why.
+
 ---
 
 [<- Prev][QScript/Lua/Classes] |

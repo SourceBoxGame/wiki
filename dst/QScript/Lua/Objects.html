@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <script>
-    const documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Tutorial/Chapter1.html']
-    const namelist = ['Wiki Intro', 'QScript Intro', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Objects', 'QScript Tutorial Chapter 1']
+    const documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Tutorial/Chapter1.html']
+    const namelist = ['Wiki Intro', 'QScript Intro', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'QScript Tutorial Chapter 1']
 
     function updateSearch() {
         searchtext = document.getElementById("searchbox").value.toLowerCase();
@@ -58,6 +58,8 @@ finish(my_class) -- Finish the class
 
 my_object = object(my_class) -- Make the object
 </code></pre>
+
+<p>Why would you use an object instead of a table? Well, you'll soon see why.</p>
 
 <hr />
 
