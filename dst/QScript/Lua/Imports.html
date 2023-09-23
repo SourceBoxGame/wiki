@@ -42,6 +42,31 @@ pre {
     </nav>
 </div>
 <div style="margin-left:200px;">
-<h1>QScript Tutorial Chapter 1</h1>
+<h1>Lua Imports</h1>
+
+<p>Now that you have exported some variables, something's gotta import them! As always, it is very simple to do.</p>
+
+<p>Let's say that you have made a file called "MyLib.lua" inside a mod called "MyMod". These are the contents of it:</p>
+
+<pre><code>-- MyMod/MyLib.lua
+function add(a,b)
+    return a + b
+end
+
+export(add)
+</code></pre>
+
+<p>Now you want to import it inside another file. You call the <code>import()</code> function with the file name of the thing you want to import. It will return a table containing all the exported variables.</p>
+
+<pre><code>MyLib = import("MyMod/MyLib.lua") -- Import the library
+
+MyLib.add(5,7) -- Will return 12
+</code></pre>
+
+<p>Importing works between other languages. So you don't need to worry about a library being written in a different language than you would like. (You could even use multiple languages in one project! Think about that!)</p>
+
+<hr />
+
+<p><a href="/wiki/QScript/Lua/Exports.html">&lt;- Prev</a></p>
 
 </div>

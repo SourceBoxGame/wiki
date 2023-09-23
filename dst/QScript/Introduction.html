@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <script>
-    const documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Tutorial/Chapter1.html']
-    const namelist = ['Wiki Intro', 'QScript Intro', 'QScript Tutorial Chapter 1']
+    const documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Tutorial/Chapter1.html']
+    const namelist = ['Wiki Intro', 'QScript Intro', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Objects', 'QScript Tutorial Chapter 1']
 
     function updateSearch() {
         searchtext = document.getElementById("searchbox").value.toLowerCase();
@@ -25,6 +25,15 @@
         
     }
 </script>
+<style>
+pre {
+    margin-left:16px;
+    background-color: #EEE;
+    border-color: #CCC;
+    border-style:solid;
+    border-width:1px;
+}
+</style>
 <div style="position:fixed; display:block; top: 0px; left: 0px; height:100%; width:200px;border-color: black; border-width: 1px; border-style:solid;">
     <input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" style="width:192px;">
     <nav>
