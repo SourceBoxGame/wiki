@@ -17,4 +17,4 @@ To create a new object, simply call the `object()` function with a class, and it
 ---
 
 [<- Prev][QScript/Lua/Classes] |
-[Next ->][QScript/Lua/Exports_Imports]
+[Next ->][QScript/Lua/Exports]
