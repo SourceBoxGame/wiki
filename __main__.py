@@ -20,7 +20,7 @@ for root, subdirs, files in os.walk(src):
             rawmarkdown = f.read()
             if(rawmarkdown[0:2] != "# "):
                 raise SyntaxError(".md file must begin with a # marked title!")
-            documentlist.append(fpath[len(src):].replace(".md",".html").replace("\\","/"))
+            documentlist.append("/wiki/"+fpath[len(src):].replace(".md",".html").replace("\\","/"))
             namelist.append(rawmarkdown[2:].split("\n",1)[0])
 template = template.replace("@DOCUMENTLIST",str(documentlist)).replace("@NAMELIST",str(namelist))
 for root, subdirs, files in os.walk(src):
