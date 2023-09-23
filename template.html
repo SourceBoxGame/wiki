@@ -1,7 +1,14 @@
 <!DOCTYPE html>
+<title>SourceBox Wiki</title>
 <script>
     const documentlist = @DOCUMENTLIST
     const namelist = @NAMELIST
+
+    function toggleTree(element)
+    {
+        element.parentElement.querySelector(".nested").classList.toggle("active");
+        element.classList.toggle("active");
+    }
 
     function updateSearch() {
         searchtext = document.getElementById("searchbox").value.toLowerCase();
@@ -9,7 +16,14 @@
         var searchresults = document.getElementById("searchresults")
         searchresults.innerHTML = ""
         if(searchtext === "")
+        {
+            document.getElementById("filetree").style.display = "block"
             return;
+        }
+        else
+        {
+            document.getElementById("filetree").style.display = "none"
+        }
         for (var i = 0; i < namelist.length; i++) 
         {
             if(!namelist[i].toLowerCase().includes(searchtext)) continue;
@@ -33,11 +47,57 @@ pre {
     border-style:solid;
     border-width:1px;
 }
+.nested {
+  display: none;
+  border-left: 1px solid #000;
+}
+
+.active {
+  display: block;
+}
+
+ul {
+    padding-left: 8px;
+}
+
+li ::marker {
+    color:#00000000
+}
+
+li b::before{
+    content:'+';
+    width:12px;
+    height:8px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+li b.active
+{
+    display:inline;
+}
+
+li b.active::before
+{
+    content: '-';
+    width:12px;
+    height:8px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+li b {
+    cursor: pointer;
+}
+
 </style>
 <div style="position:fixed; display:block; top: 0px; left: 0px; height:100%; width:200px;border-color: black; border-width: 1px; border-style:solid;">
     <input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" style="width:192px;">
     <nav>
         <ul id="searchresults">
+        </ul>
+        <ul id="filetree">
+            @FILETREE
         </ul>
     </nav>
 </div>

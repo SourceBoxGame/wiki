@@ -6,25 +6,52 @@ import shutil
 
 mark = markdown2.Markdown()
 
-src = os.path.dirname(os.path.realpath(__file__))+"/src/"
-dst = os.path.dirname(os.path.realpath(__file__))+"/dst/"
+rootpath = os.path.dirname(os.path.realpath(__file__))
+src = rootpath+"/src/"
+lensrc = len(src)
+dst = rootpath+"/dst/"
+assets = rootpath+"/assets/"
 shutil.rmtree(dst)
-os.mkdir(dst)
+shutil.copytree(assets,dst)
 with open("template.html","r") as f:
     template = f.read()
 
 documentlist = []
 namelist = []
+filetreedict = {}
+filetree = ""
 
 for root, subdirs, files in os.walk(src):
+    p = filetreedict
+    if root[lensrc:]:
+        for x in root[lensrc:].replace("\\","/").split("/"):
+            p = p.setdefault(x, {})
+    p[''] = []
     for file in files:
         fpath = os.path.join(root, file)
         with open(fpath,"r") as f:
             rawmarkdown = f.read()
             if(rawmarkdown[0:2] != "# "):
                 raise SyntaxError(".md file must begin with a # marked title!")
+            name = rawmarkdown[2:].split("\n",1)[0]
+            p[''].append([os.path.join(root[lensrc:],file.replace(".md","")).replace("\\","/"),name])
             documentlist.append("/wiki/"+fpath[len(src):].replace(".md",".html").replace("\\","/"))
-            namelist.append(rawmarkdown[2:].split("\n",1)[0])
+            namelist.append(name)
+
+def IterateFileTree(filedict):
+    global filetree
+    for key, value in filedict.items():
+        if isinstance(value, dict):
+            filetree += f"<li><b onclick=\"toggleTree(this);\">{key}</b>\n<ul class=\"nested\">\n"
+            IterateFileTree(value)
+            filetree += f"</ul>\n</li>\n"
+        else:
+            for file in value:
+                filetree += f"<li><a href=\"/wiki/{file[0]}.html\">{file[1]}</a></li>\n"
+
+IterateFileTree(filetreedict)
+print(filetree)
+
 template = template.replace("@DOCUMENTLIST",str(documentlist)).replace("@NAMELIST",str(namelist))
 for root, subdirs, files in os.walk(src):
     if(not os.path.exists(dst+root[len(src):])):
@@ -48,4 +75,4 @@ for root, subdirs, files in os.walk(src):
                     name = link[1:].split("]",1)[0]
                     href = link[1:].split("[",1)[1].split("]",1)[0]
                     converted = converted.replace(link, "<a href=\"/wiki/"+href+".html\">"+name+"</a>")
-                r.write(template.replace("@CONTENT",converted))
+                r.write(template.replace("@CONTENT",converted).replace("@FILETREE",filetree))

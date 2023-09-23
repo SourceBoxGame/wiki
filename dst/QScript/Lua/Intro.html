@@ -1,7 +1,14 @@
 <!DOCTYPE html>
+<title>SourceBox Wiki</title>
 <script>
     const documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Tutorial/Chapter1.html']
     const namelist = ['Wiki Intro', 'QScript Intro', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'QScript Tutorial Chapter 1']
+
+    function toggleTree(element)
+    {
+        element.parentElement.querySelector(".nested").classList.toggle("active");
+        element.classList.toggle("active");
+    }
 
     function updateSearch() {
         searchtext = document.getElementById("searchbox").value.toLowerCase();
@@ -9,7 +16,14 @@
         var searchresults = document.getElementById("searchresults")
         searchresults.innerHTML = ""
         if(searchtext === "")
+        {
+            document.getElementById("filetree").style.display = "block"
             return;
+        }
+        else
+        {
+            document.getElementById("filetree").style.display = "none"
+        }
         for (var i = 0; i < namelist.length; i++) 
         {
             if(!namelist[i].toLowerCase().includes(searchtext)) continue;
@@ -33,11 +47,85 @@ pre {
     border-style:solid;
     border-width:1px;
 }
+.nested {
+  display: none;
+  border-left: 1px solid #000;
+}
+
+.active {
+  display: block;
+}
+
+ul {
+    padding-left: 8px;
+}
+
+li ::marker {
+    color:#00000000
+}
+
+li b::before{
+    content:'+';
+    width:12px;
+    height:8px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+li b.active
+{
+    display:inline;
+}
+
+li b.active::before
+{
+    content: '-';
+    width:12px;
+    height:8px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+li b {
+    cursor: pointer;
+}
+
 </style>
 <div style="position:fixed; display:block; top: 0px; left: 0px; height:100%; width:200px;border-color: black; border-width: 1px; border-style:solid;">
     <input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" style="width:192px;">
     <nav>
         <ul id="searchresults">
+        </ul>
+        <ul id="filetree">
+            <li><a href="/wiki/index.html">Wiki Intro</a></li>
+<li><b onclick="toggleTree(this);">QScript</b>
+<ul class="nested">
+<li><a href="/wiki/QScript/Introduction.html">QScript Intro</a></li>
+<li><b onclick="toggleTree(this);">Lua</b>
+<ul class="nested">
+<li><a href="/wiki/QScript/Lua/Classes.html">Lua Classes</a></li>
+<li><a href="/wiki/QScript/Lua/Exports.html">Lua Exports</a></li>
+<li><a href="/wiki/QScript/Lua/Imports.html">Lua Imports</a></li>
+<li><a href="/wiki/QScript/Lua/Intro.html">Lua Intro</a></li>
+<li><a href="/wiki/QScript/Lua/Objects.html">Lua Objects</a></li>
+</ul>
+</li>
+<li><b onclick="toggleTree(this);">Python</b>
+<ul class="nested">
+</ul>
+</li>
+<li><b onclick="toggleTree(this);">Squirrel</b>
+<ul class="nested">
+</ul>
+</li>
+<li><b onclick="toggleTree(this);">Tutorial</b>
+<ul class="nested">
+<li><a href="/wiki/QScript/Tutorial/Chapter1.html">QScript Tutorial Chapter 1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+
         </ul>
     </nav>
 </div>
