@@ -6,8 +6,23 @@
 
     function toggleTree(element)
     {
-        element.parentElement.querySelector(".nested").classList.toggle("active");
-        element.classList.toggle("active");
+        const nested = element.parentElement.querySelector(".nested");
+        if(nested.className.indexOf("active",0) != -1)
+        {
+            nested.className = "nested";
+        }
+        else
+        {
+            nested.className = "nested active";
+        }
+        if(element.className.indexOf("active",0) != -1)
+        {
+            element.className = ""
+        }
+        else
+        {
+            element.className = "active"
+        }
     }
 
     function updateSearch() {
@@ -65,10 +80,14 @@ li ::marker {
     display:none;
 }
 
+li {
+    list-style-type: none !important;
+}
+
 li b::before{
     content:'+';
     width:12px;
-    height:8px;
+    height:100%;
     display: inline-block;
     font-weight: 500;
 }
@@ -78,7 +97,7 @@ li b.active::before
 {
     content: '-';
     width:12px;
-    height:8px;
+    height:100%;
     display: inline-block;
     font-weight: 500;
 }
@@ -128,6 +147,7 @@ li b {
     </nav>
 </div>
 <div style="margin-left:200px;">
+<p id="errorp"></p>
 <h1>Lua Classes</h1>
 
 <p>Let's start with an analogy. Imagine you want to make star-shaped cookies. You could of course, manually cut the baked cookie and then be left with a mess, or you could use a cookie cutter before baking it. In this analogy, the cookie is an object, the manual cutting method is using tables, and the cookie cutter is a class.</p>

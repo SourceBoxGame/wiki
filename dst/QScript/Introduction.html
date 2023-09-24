@@ -6,8 +6,23 @@
 
     function toggleTree(element)
     {
-        element.parentElement.querySelector(".nested").classList.toggle("active");
-        element.classList.toggle("active");
+        const nested = element.parentElement.querySelector(".nested");
+        if(nested.className.indexOf("active",0) != -1)
+        {
+            nested.className = "nested";
+        }
+        else
+        {
+            nested.className = "nested active";
+        }
+        if(element.className.indexOf("active",0) != -1)
+        {
+            element.className = ""
+        }
+        else
+        {
+            element.className = "active"
+        }
     }
 
     function updateSearch() {
@@ -65,10 +80,14 @@ li ::marker {
     display:none;
 }
 
+li {
+    list-style-type: none !important;
+}
+
 li b::before{
     content:'+';
     width:12px;
-    height:8px;
+    height:100%;
     display: inline-block;
     font-weight: 500;
 }
@@ -78,7 +97,7 @@ li b.active::before
 {
     content: '-';
     width:12px;
-    height:8px;
+    height:100%;
     display: inline-block;
     font-weight: 500;
 }
@@ -128,6 +147,7 @@ li b {
     </nav>
 </div>
 <div style="margin-left:200px;">
+<p id="errorp"></p>
 <h1>QScript Intro</h1>
 
 <p>QScript is a multi-language scripting system designed with security and stability in mind.
