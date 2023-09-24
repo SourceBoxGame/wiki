@@ -38,18 +38,24 @@ for root, subdirs, files in os.walk(src):
             documentlist.append("/wiki/"+fpath[len(src):].replace(".md",".html").replace("\\","/"))
             namelist.append(name)
 
-def IterateFileTree(filedict):
+def IterateFileTree(filedict,path,parentexpanded):
     global filetree
     for key, value in filedict.items():
         if isinstance(value, dict):
-            filetree += f"<li><small class=\"liicon\">+</small><b onclick=\"toggleTree(this);\">{key}</b>\n<ul class=\"nested\">\n"
-            IterateFileTree(value)
+            classname = "nested"
+            expandicon = "+"
+            expanded = False
+            if "/"+key+"/" in path and parentexpanded:
+                classname += " active"
+                expandicon = "-"
+                expanded = True
+            
+            filetree += f"<li><small class=\"liicon\">{expandicon}</small><b onclick=\"toggleTree(this);\">{key}</b>\n<ul class=\"{classname}\">\n"
+            IterateFileTree(value,path,expanded)
             filetree += f"</ul>\n</li>\n"
         else:
             for file in value:
                 filetree += f"<li><a href=\"/wiki/{file[0]}.html\">{file[1]}</a></li>\n"
-
-IterateFileTree(filetreedict)
 
 def FindFile(name):
     for root, subdirs, files in os.walk(src):
@@ -60,9 +66,11 @@ def FindFile(name):
 template = template.replace("@DOCUMENTLIST",str(documentlist)).replace("@NAMELIST",str(namelist))
 for root, subdirs, files in os.walk(src):
     if(not os.path.exists(dst+root[len(src):])):
-        os.mkdir(dst+root[len(src):])
+        os.mkdir(dst+root[lensrc:])
     for file in files:
         fpath = os.path.join(root, file)
+        filetree = ""
+        IterateFileTree(filetreedict,"/"+os.path.join(root[lensrc:], file).replace("\\","/"), True)
         with open(fpath,"r") as f:
             with open(dst+fpath[len(src):].replace(".md",".html"), "w") as r:
                 rawmarkdown = f.read().replace("\r\n","\n")
