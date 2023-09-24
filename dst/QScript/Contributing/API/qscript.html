@@ -165,19 +165,91 @@ li b {
 </div>
 <div style="margin-left:200px;">
 <p id="errorp"></p>
-<h1>QScript Tutorial Page 2: Getting to work</h1>
-
-<p>In your freshly created folder, make a new file called <code>autorun_client</code> with the extension of your favorite programming language that QScript supports.</p>
-
-<p>Currently, QScript is in the "DO NOT USE" stage, which means that the only implemented bindings are:</p>
-
-<ul>
-<li><code>sourcebox_client.Msg()</code> takes a string and prints it to the console.</li>
-<li><code>sourcebox_client.RegisterCmd()</code> takes a string and a function (in said order) and registers that as a console command.</li>
-</ul>
+<h1>QScript API</h1>
 
 <hr />
 
-<p><a href="/wiki/QScript/Tutorial/Chapter1.html">&lt;- Prev</a></p>
+<h2>CreateModule</h2>
+
+<pre><code>QScriptModule CreateModule(const char* name, QModuleDefFunc* funcs)
+</code></pre>
+
+<p>Takes a name, and a <a href="/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html">QModuleDefFunc</a> list, returns a QScriptModule</p>
+
+<hr />
+
+<h2>LoadMods</h2>
+
+<pre><code>void LoadMods(const char* filename)
+</code></pre>
+
+<p>Will load a file inside the root of every mod.</p>
+
+<hr />
+
+<h2>LoadModsInDirectory</h2>
+
+<pre><code>void LoadModsInDirectory(const char* folder, const char* filename)
+</code></pre>
+
+<p>Acts like LoadMods, but loads a file inside a subdirectory. (mods/*/folder/filename.*)</p>
+
+<hr />
+
+<h2>StartClass</h2>
+
+<pre><code>QScriptClassCreator StartClass(const char* name, QScriptClass parent)
+</code></pre>
+
+<p>Returns a <a href="/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html">QScriptClassCreator</a></p>
+
+<hr />
+
+<h2>AddMethod</h2>
+
+<pre><code>void AddMethod(QScriptClassCreator creator, const char* name, QType* params, QCFunc func, bool is_private = false)
+</code></pre>
+
+<p>Adds a method to the class creator. Takes a name, <a href="/wiki/QScript/Contributing/API/Structs/QType.html">QType</a> list which will be the parameters, <a href="/wiki/QScript/Contributing/API/Structs/QCFunc.html">QCFunc</a> which will be the callback, and an optional <a href="/wiki/QScript/Private_Members.html">is_private</a> bool.</p>
+
+<hr />
+
+<h2>AddScriptingMethod</h2>
+
+<pre><code>void AddScriptingMethod(QScriptClassCreator creator, const char* name, QScriptCallback callback, bool is_private)
+</code></pre>
+
+<p>Adds a scripting language method for the class creator. Takes a name, <a href="/wiki/QScript/Contributing/API/Structs/QScriptCallback.html">QScriptCallback</a> which will be called when the method is called, and an optional is_private bool.</p>
+
+<hr />
+
+<h2>AddVariable</h2>
+
+<pre><code>void AddVariable(QScriptClassCreator creator, const char* name, QType type, QValue defaultval, bool is_private)
+</code></pre>
+
+<p>Adds a variable with a default value to the class creator. Takes a name, QType, <a href="/wiki/QScript/Contributing/API/Structs/QValue.html">QValue</a>, and an optional is_private bool.</p>
+
+<p>Do <strong>not</strong> use this for adding strings. Use the next method instead.</p>
+
+<hr />
+
+<h2>AddString</h2>
+
+<pre><code>void AddString(QScriptClassCreator creator, const char* name, const char* defaultval, bool is_private)
+</code></pre>
+
+<p>Adds a string variable to the class creator. Takes a name, a default value and an optional is_private bool.</p>
+
+<hr />
+
+<h2>FinishClass</h2>
+
+<pre><code>QScriptClass FinishClass(QScriptClassCreator creator)
+</code></pre>
+
+<p>Finishes the class creator and returns a <a href="/wiki/QScript/Contributing/API/Structs/QScriptClass.html">QScriptClass</a>. Will delete the creator.</p>
+
+<hr />
 
 </div>

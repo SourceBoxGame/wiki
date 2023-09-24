@@ -50,7 +50,12 @@ def IterateFileTree(filedict):
                 filetree += f"<li><a href=\"/wiki/{file[0]}.html\">{file[1]}</a></li>\n"
 
 IterateFileTree(filetreedict)
-print(filetree)
+
+def FindFile(name):
+    for root, subdirs, files in os.walk(src):
+        if name in files:
+            return os.path.join(root[lensrc:],name)
+    raise SyntaxError(f"Could not find file {name}!")
 
 template = template.replace("@DOCUMENTLIST",str(documentlist)).replace("@NAMELIST",str(namelist))
 for root, subdirs, files in os.walk(src):
@@ -66,16 +71,23 @@ for root, subdirs, files in os.walk(src):
                     smallstring = small.strip()
                     whitespace = small[len(smallstring):]
                     rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:16px;\">"+smallstring+"</small>\n"+whitespace)
-                links = re.findall(r'\[\[.+\]\]', rawmarkdown)
+                links = re.findall(r'\[\[[^\[^\]]+\]\]', rawmarkdown)
                 for link in links:
-                    rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</a>")
-                links = re.findall(r'\[.+\]\[.+\]',rawmarkdown)
+                    if os.path.exists(os.path.join(src,link[2:-2]+".md")):
+                        rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</a>")
+                    else:
+                        foundpath = FindFile(link[2:-2]+".md").replace(".md","").replace("\\","/")
+                        rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+foundpath+".html\">"+foundpath.split("/")[-1]+"</a>")
+                links = re.findall(r'\[[^\[^\]]+\]\[[^\[^\]]+\]',rawmarkdown)
                 for link in links:
                     name = link[1:].split("]",1)[0]
                     href = link[1:].split("[",1)[1].split("]",1)[0]
                     if(href.startswith("http://") or href.startswith("https://")):
                         rawmarkdown = rawmarkdown.replace(link, "<a href=\""+href+"\">"+name+"</a>")
-                    else:
+                    elif os.path.exists(os.path.join(src,href+".md")):
                         rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+href+".html\">"+name+"</a>")
+                    else:
+                        foundpath = FindFile(href+".md").replace(".md","").replace("\\","/")
+                        rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+foundpath+".html\">"+name+"</a>")
                 converted = mark.convert(rawmarkdown)
                 r.write(template.replace("@CONTENT",converted).replace("@FILETREE",filetree))
