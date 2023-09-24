@@ -42,7 +42,7 @@ def IterateFileTree(filedict):
     global filetree
     for key, value in filedict.items():
         if isinstance(value, dict):
-            filetree += f"<li><b onclick=\"toggleTree(this);\">{key}</b>\n<ul class=\"nested\">\n"
+            filetree += f"<li><small class=\"liicon\">+</small><b onclick=\"toggleTree(this);\">{key}</b>\n<ul class=\"nested\">\n"
             IterateFileTree(value)
             filetree += f"</ul>\n</li>\n"
         else:

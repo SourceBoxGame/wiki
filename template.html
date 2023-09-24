@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <title>SourceBox Wiki</title>
 <script>
-    const documentlist = @DOCUMENTLIST
-    const namelist = @NAMELIST
+    documentlist = @DOCUMENTLIST;
+    namelist = @NAMELIST;
 
     function toggleTree(element)
     {
-        const nested = element.parentElement.querySelector(".nested");
+        nested = element.parentNode.childNodes[3];
         if(nested.className.indexOf("active",0) != -1)
         {
             nested.className = "nested";
+            element.parentNode.childNodes[0].innerHTML = "+";
         }
         else
         {
             nested.className = "nested active";
+            element.parentNode.childNodes[0].innerHTML = "-";
         }
         if(element.className.indexOf("active",0) != -1)
         {
@@ -67,7 +69,7 @@ pre {
   border-left: 1px solid #000;
 }
 
-.active {
+ul.active {
   display: block !important;
 }
 
@@ -84,27 +86,17 @@ li {
     list-style-type: none !important;
 }
 
-li b::before{
-    content:'+';
-    width:12px;
-    height:100%;
-    display: inline-block;
-    font-weight: 500;
-}
-
-
-li b.active::before
-{
-    content: '-';
-    width:12px;
-    height:100%;
-    display: inline-block;
-    font-weight: 500;
-}
-
 li b {
     cursor: pointer;
-    display: block;
+    display: inline-block;
+}
+
+.liicon {
+    display:inline-block;
+    width:12px;
+    height:100%;
+    font-family: monospace;
+    font-size: 16px;
 }
 
 </style>
