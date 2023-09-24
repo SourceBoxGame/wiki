@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <title>SourceBox Wiki</title>
 <script>
-    documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Tutorial/Chapter1.html'];
-    namelist = ['Wiki Intro', 'QScript Intro', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'QScript Tutorial Chapter 1'];
+    documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Squirrel/Exports_And_Imports.html', '/wiki/QScript/Squirrel/Intro.html', '/wiki/QScript/Tutorial/Chapter1.html', '/wiki/QScript/Tutorial/Chapter2.html'];
+    namelist = ['Wiki Intro', 'QScript Intro', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'Squirrel Exports and Imports', 'Squirrel Intro', 'QScript Tutorial Page 1: Mods', 'QScript Tutorial Page 2: Getting to work'];
 
     function toggleTree(element)
     {
@@ -125,11 +125,14 @@ li b {
 </li>
 <li><small class="liicon">+</small><b onclick="toggleTree(this);">Squirrel</b>
 <ul class="nested">
+<li><a href="/wiki/QScript/Squirrel/Exports_And_Imports.html">Squirrel Exports and Imports</a></li>
+<li><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel Intro</a></li>
 </ul>
 </li>
 <li><small class="liicon">+</small><b onclick="toggleTree(this);">Tutorial</b>
 <ul class="nested">
-<li><a href="/wiki/QScript/Tutorial/Chapter1.html">QScript Tutorial Chapter 1</a></li>
+<li><a href="/wiki/QScript/Tutorial/Chapter1.html">QScript Tutorial Page 1: Mods</a></li>
+<li><a href="/wiki/QScript/Tutorial/Chapter2.html">QScript Tutorial Page 2: Getting to work</a></li>
 </ul>
 </li>
 </ul>
@@ -140,16 +143,28 @@ li b {
 </div>
 <div style="margin-left:200px;">
 <p id="errorp"></p>
-<h1>QScript Tutorial Chapter 1</h1>
+<h1>QScript Tutorial Page 1: Mods</h1>
 
-<p>Currently, only a short documentation of Lua is available. </p>
+<p>QScript operates on "mods" which are folders inside the <code>sourcebox/mods/</code> directory.</p>
 
-<p>Languages:</p>
+<p>Make a new directory called "TutorialMod" inside it. This will be the mod you will be operating on in the tutorial.</p>
+
+<p>Before you can begin coding anything, you have to pick a language.</p>
+
+<p>QScript currently supports the following lanugages:</p>
 
 <ul>
 <li><p><a href="/wiki/QScript/Lua/Intro.html">Lua</a></p></li>
-<li><p>Squirrel</p></li>
+<li><p><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel</a></p></li>
 <li><p>Python</p></li>
 </ul>
+
+<p>Go to the language you will be using to learn about the QScript specific changes for each language.</p>
+
+<p>After you learned what you need to know, go to the next page.</p>
+
+<hr />
+
+<p><a href="/wiki/QScript/Tutorial/Chapter2.html">Next -></a></p>
 
 </div>

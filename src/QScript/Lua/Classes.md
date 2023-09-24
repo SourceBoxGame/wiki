@@ -46,4 +46,5 @@ We can now move on to objects.
 
 ---
 
+[<- Prev][QScript/Lua/Intro] |
 [Next ->][QScript/Lua/Objects]

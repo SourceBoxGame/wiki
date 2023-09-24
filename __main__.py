@@ -66,13 +66,16 @@ for root, subdirs, files in os.walk(src):
                     smallstring = small.strip()
                     whitespace = small[len(smallstring):]
                     rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:16px;\">"+smallstring+"</small>\n"+whitespace)
-                converted = mark.convert(rawmarkdown)
-                links = re.findall(r'\[\[.+\]\]', converted)
+                links = re.findall(r'\[\[.+\]\]', rawmarkdown)
                 for link in links:
-                    converted = converted.replace(link, "<a href=\"/wiki/"+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</a>")
-                links = re.findall(r'\[.+\]\[.+\]',converted)
+                    rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</a>")
+                links = re.findall(r'\[.+\]\[.+\]',rawmarkdown)
                 for link in links:
                     name = link[1:].split("]",1)[0]
                     href = link[1:].split("[",1)[1].split("]",1)[0]
-                    converted = converted.replace(link, "<a href=\"/wiki/"+href+".html\">"+name+"</a>")
+                    if(href.startswith("http://") or href.startswith("https://")):
+                        rawmarkdown = rawmarkdown.replace(link, "<a href=\""+href+"\">"+name+"</a>")
+                    else:
+                        rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+href+".html\">"+name+"</a>")
+                converted = mark.convert(rawmarkdown)
                 r.write(template.replace("@CONTENT",converted).replace("@FILETREE",filetree))

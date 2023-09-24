@@ -143,35 +143,42 @@ li b {
 </div>
 <div style="margin-left:200px;">
 <p id="errorp"></p>
-<h1>Lua Imports</h1>
+<h1>Squirrel Exports and Imports</h1>
 
-<p>Now that you have exported some variables, something's gotta import them! As always, it is very simple to do.</p>
+<p>The main big feature of QScript is the export system. It lets you export classes, objects and functions which other files can import from your script.</p>
 
-<p>Let's say that you have made a file called "MyLib.lua" inside a mod called "MyMod". These are the contents of it:</p>
+<p>Let's say that you have a library called "MyLib.nut" inside a mod called "MyMod". This is what it contains:</p>
 
-<p><small style="position:relative; top:16px;">MyMod/MyLib.lua</small></p>
+<p><small style="position:relative; top:16px;">MyMod/MyLib.nut</small></p>
 
-<pre><code>function add(a,b)
-    return a + b
-end
+<pre><code>class AdditionClass
+{
+    function Add(a,b)
+    {
+        return a + b;
+    }
+}
 
-export(add)
+Addition &lt;- AdditionClass() -- Exports can only use global variables!
 </code></pre>
 
-<p>Now you want to import it inside another file. You call the <code>import()</code> function with the file name of the thing you want to import. It will return a table containing all the exported variables.</p>
+<p>Now to export the <code>Addition</code> object, pass them to the <code>export()</code> function at the end of the file.</p>
 
-<pre><code>MyLib = import("MyMod/MyLib.lua") -- Import the library
+<p><small style="position:relative; top:16px;">MyMod/MyLib.nut</small></p>
 
-MyLib.add(5,7) -- Will return 12
+<pre><code>export(Addition);
 </code></pre>
 
-<p>Importing works between other languages. So you don't need to worry about a library being written in a different language than you would like. (You could even use multiple languages in one project! Think about that!)</p>
+<p>To import the exported elements in another file, simply use the <code>import()</code> function with the file path of the script you want to import from.</p>
 
-<p>The reason why you can't use tables, is because objects, are actually shared! One script can modify it (like set a variable), and every other script will also see the change. Tables differ between languages, meaning that having to manually sync them between eachother would be a bad idea. Here, you only get a "reference" to the object. Meaning that every script sees the <em>same</em> object, not copies of it.</p>
+<pre><code>MyLib &lt;- import("MyMod/MyLib.nut");
+
+MyLib.Addition.Add(2,5); -- will return 7
+</code></pre>
 
 <hr />
 
-<p><a href="/wiki/QScript/Lua/Exports.html">&lt;- Prev</a> |
+<p><a href="/wiki/QScript/Squirrel/Intro.html">&lt;- Prev</a> |
 <a href="/wiki/QScript/Tutorial/Chapter1.html">Go back to the QScript Tutorial</a></p>
 
 </div>
