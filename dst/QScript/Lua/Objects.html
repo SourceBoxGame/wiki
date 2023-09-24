@@ -9,25 +9,50 @@
         nested = element.parentNode.childNodes[3];
         if(nested.className.indexOf("active",0) != -1)
         {
-            nested.className = "nested";
+            nested.className = "sidebar nested";
             element.parentNode.childNodes[0].innerHTML = "+";
         }
         else
         {
-            nested.className = "nested active";
+            nested.className = "sidebar nested active";
             element.parentNode.childNodes[0].innerHTML = "-";
         }
         if(element.className.indexOf("active",0) != -1)
         {
-            element.className = ""
+            element.className = "spanactive"
         }
         else
         {
-            element.className = "active"
+            element.className = "spanactive active"
         }
     }
 
-    function updateSearch() {
+    function Press(element)
+    {
+        if(element.className.indexOf("active",0) != -1)
+        {
+            element.className = "spanactive active"
+        }
+        else
+        {
+            element.className = "spanactive"
+        }
+    }
+
+    function unPress(element)
+    {
+        if(element.className.indexOf("active",0) != -1)
+        {
+            element.className = "active"
+        }
+        else
+        {
+            element.className = ""
+        }
+    }
+
+    function updateSearch()
+    {
         searchtext = document.getElementById("searchbox").value.toLowerCase();
         var res = [];
         var searchresults = document.getElementById("searchresults")
@@ -45,6 +70,7 @@
         {
             if(namelist[i].toLowerCase().indexOf(searchtext) == -1) continue;
             var searchelement = document.createElement("li");
+            searchelement.className = "sidebar"
             var link = document.createElement("a");
             searchelement.appendChild(link);
             link.setAttribute("href", documentlist[i]);
@@ -57,104 +83,225 @@
     }
 </script>
 <style>
-pre {
-    margin-left:16px;
-    background-color: #EEE;
-    border-color: #CCC;
-    border-style:solid;
-    border-width:1px;
-}
-.nested {
-  display: none;
-  border-left: 1px solid #000;
+
+hr
+{
+    color: #463c2a;
 }
 
-ul.active {
+pre
+{
+    margin-left:16px;
+    background-color: #473c29;
+    border-color: #3b3221;
+    border-style:solid;
+    border-width:1px;
+    padding: 4px;
+}
+
+.nested
+{
+  display: none;
+}
+
+ul.sidebar.active
+{
   display: block !important;
 }
 
-ul {
-    padding-left: 8px;
+ul.sidebar
+{
+    padding-left: 4px;
 }
 
-li ::marker {
+li.sidebar ::marker
+{
     color:#00000000;
     display:none;
 }
 
-li {
+li.sidebar
+{
     list-style-type: none !important;
+    border-bottom: #473c29 1px solid;
+    border-right: #473c29 1px solid;
+    border-left: 1px solid #8d8881;
+    border-top: 1px solid #8d8881;
+    padding-left: 2px;
+    padding-bottom:2px;
+    padding-top:2px;
+    margin-right:2px;
 }
 
-li b {
+li.sidebar span
+{
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 1;
     cursor: pointer;
     display: inline-block;
+    border: black 1px solid;
+    border-left-color: white;
+    border-top-color: white;
+    margin: 2px;
 }
 
-.liicon {
+li.sidebar span span
+{
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 0;
+    border: #463c2a 1px solid;
+    background-color: #63553b;
+    color: white;
+    border-left-color: #8d8881;
+    border-top-color: #8d8881;
+    margin: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+li.sidebar .spanactive
+{
+    border-left-color: black;
+    border-top-color: black;
+    border-right-color: white;
+    border-bottom-color: white;
+}
+
+li.sidebar span .spanactive
+{
+    border: #463c2a 1px solid;
+    border-right-color: #8d8881;
+    border-bottom-color: #8d8881;
+}
+
+
+.liicon
+{
     display:inline-block;
     width:12px;
     height:100%;
     font-family: monospace;
     font-size: 16px;
+    color: white;
+}
+
+nav
+{
+    background-color: #63553b;
+    height: 100%;
+}
+
+a
+{
+    color: #f79b08;
+}
+
+a:visited
+{
+    color: #f79b08;
+}
+
+body 
+{
+    background-color: #63553b;
+    color:white;
+    font-family:"Tahoma", sans-serif;
+    font-size:9pt;
+}
+
+.searchbox 
+{
+    background-color: #473c29;
+    border: #403624 1px solid;
+    border-bottom-color: #837f7a;
+    border-right-color: #837f7a;
+    color: white;
+    padding: 0px;
+    width:195px;
+    height:16px;
+    position: relative;
+    top:1px;
+    left:1px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.searchboxcontainer 
+{
+    background-color: #473c29;
+    border: black 1px solid;
+    border-bottom-color: white;
+    border-right-color: white;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    height:19px;
+    width:198px;
+    display: inline-block;
 }
 
 </style>
-<div style="position:fixed; display:block; top: 0px; left: 0px; height:100%; width:200px;border-color: black; border-width: 1px; border-style:solid;">
-    <input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" style="width:192px;">
+<div style="position:absolute; display:block; top: 0px; left: 0px; height:100%; width:200px;border-color: black; border-width: 1px; border-style:solid;">
+    <span class="searchboxcontainer"><input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" class="searchbox"></span>
     <nav>
-        <ul id="searchresults">
+        <ul class="sidebar" id="searchresults">
         </ul>
-        <ul id="filetree">
-            <li><a href="/wiki/index.html">Wiki Intro</a></li>
-<li><small class="liicon">-</small><b onclick="toggleTree(this);">QScript</b>
-<ul class="nested active">
-<li><a href="/wiki/QScript/Introduction.html">QScript Intro</a></li>
-<li><a href="/wiki/QScript/Private_Members.html">Private Members</a></li>
-<li><small class="liicon">+</small><b onclick="toggleTree(this);">Contributing</b>
-<ul class="nested">
-<li><a href="/wiki/QScript/Contributing/Contributing.html">Contributing</a></li>
-<li><small class="liicon">+</small><b onclick="toggleTree(this);">API</b>
-<ul class="nested">
-<li><a href="/wiki/QScript/Contributing/API/qscript.html">QScript API</a></li>
-<li><small class="liicon">+</small><b onclick="toggleTree(this);">Structs</b>
-<ul class="nested">
-<li><a href="/wiki/QScript/Contributing/API/Structs/QCFunc.html">QCFunc</a></li>
-<li><a href="/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html">QModuleDefFunc</a></li>
-<li><a href="/wiki/QScript/Contributing/API/Structs/QScriptCallback.html">QScriptCallback</a></li>
-<li><a href="/wiki/QScript/Contributing/API/Structs/QScriptClass.html">QScriptClass</a></li>
-<li><a href="/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html">QScriptClassCreator</a></li>
-<li><a href="/wiki/QScript/Contributing/API/Structs/QType.html">QType</a></li>
-<li><a href="/wiki/QScript/Contributing/API/Structs/QValue.html">QValue</a></li>
+        <ul class="sidebar" id="filetree">
+            <li class="sidebar"><a href="/wiki/index.html">Wiki Intro</a></li>
+<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">QScript</span></span>
+<ul class="sidebar nested active">
+<li class="sidebar"><a href="/wiki/QScript/Introduction.html">QScript Intro</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Private_Members.html">Private Members</a></li>
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
+<ul class="sidebar nested">
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Contributing.html">Contributing</a></li>
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">API</span></span>
+<ul class="sidebar nested">
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/qscript.html">QScript API</a></li>
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Structs</span></span>
+<ul class="sidebar nested">
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QCFunc.html">QCFunc</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html">QModuleDefFunc</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptCallback.html">QScriptCallback</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClass.html">QScriptClass</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html">QScriptClassCreator</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QType.html">QType</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QValue.html">QValue</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><small class="liicon">-</small><b onclick="toggleTree(this);">Lua</b>
-<ul class="nested active">
-<li><a href="/wiki/QScript/Lua/Classes.html">Lua Classes</a></li>
-<li><a href="/wiki/QScript/Lua/Exports.html">Lua Exports</a></li>
-<li><a href="/wiki/QScript/Lua/Imports.html">Lua Imports</a></li>
-<li><a href="/wiki/QScript/Lua/Intro.html">Lua Intro</a></li>
-<li><a href="/wiki/QScript/Lua/Objects.html">Lua Objects</a></li>
+<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Lua</span></span>
+<ul class="sidebar nested active">
+<li class="sidebar"><a href="/wiki/QScript/Lua/Classes.html">Lua Classes</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Lua/Exports.html">Lua Exports</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Lua/Imports.html">Lua Imports</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Lua/Intro.html">Lua Intro</a></li>
+<li class="sidebar"><b>Lua Objects</b></li>
 </ul>
 </li>
-<li><small class="liicon">+</small><b onclick="toggleTree(this);">Python</b>
-<ul class="nested">
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Python</span></span>
+<ul class="sidebar nested">
 </ul>
 </li>
-<li><small class="liicon">+</small><b onclick="toggleTree(this);">Squirrel</b>
-<ul class="nested">
-<li><a href="/wiki/QScript/Squirrel/Exports_And_Imports.html">Squirrel Exports and Imports</a></li>
-<li><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel Intro</a></li>
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
+<ul class="sidebar nested">
+<li class="sidebar"><a href="/wiki/QScript/Squirrel/Exports_And_Imports.html">Squirrel Exports and Imports</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel Intro</a></li>
 </ul>
 </li>
-<li><small class="liicon">+</small><b onclick="toggleTree(this);">Tutorial</b>
-<ul class="nested">
-<li><a href="/wiki/QScript/Tutorial/Chapter1.html">QScript Tutorial Page 1: Mods</a></li>
-<li><a href="/wiki/QScript/Tutorial/Chapter2.html">QScript Tutorial Page 2: Getting to work</a></li>
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Tutorial</span></span>
+<ul class="sidebar nested">
+<li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter1.html">QScript Tutorial Page 1: Mods</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter2.html">QScript Tutorial Page 2: Getting to work</a></li>
 </ul>
 </li>
 </ul>
@@ -164,7 +311,6 @@ li b {
     </nav>
 </div>
 <div style="margin-left:200px;">
-<p id="errorp"></p>
 <h1>Lua Objects</h1>
 
 <p>Objects store a number of variables and functions which are defined in the class the object comes from. They kind of act like tables but are not modifiable. Meaning, if you wanted to make a new variable or function inside an object, you would get an error.</p>

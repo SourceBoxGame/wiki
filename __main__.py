@@ -40,6 +40,7 @@ for root, subdirs, files in os.walk(src):
 
 def IterateFileTree(filedict,path,parentexpanded):
     global filetree
+    currentfile = path[1:].replace(".md","")
     for key, value in filedict.items():
         if isinstance(value, dict):
             classname = "nested"
@@ -50,12 +51,15 @@ def IterateFileTree(filedict,path,parentexpanded):
                 expandicon = "-"
                 expanded = True
             
-            filetree += f"<li><small class=\"liicon\">{expandicon}</small><b onclick=\"toggleTree(this);\">{key}</b>\n<ul class=\"{classname}\">\n"
+            filetree += f"<li class=\"sidebar\"><small class=\"liicon\">{expandicon}</small><span onmousedown=\"toggleTree(this);\" onmouseleave=\"unPress(this);\" onmouseup=\"unPress(this);\"><span onmousedown=\"Press(this);\" onmouseleave=\"unPress(this);\" onmouseup=\"unPress(this);\">{key}</span></span>\n<ul class=\"sidebar {classname}\">\n"
             IterateFileTree(value,path,expanded)
             filetree += f"</ul>\n</li>\n"
         else:
             for file in value:
-                filetree += f"<li><a href=\"/wiki/{file[0]}.html\">{file[1]}</a></li>\n"
+                if file[0] == currentfile:
+                    filetree += f"<li class=\"sidebar\"><b>{file[1]}</b></li>\n"
+                else:
+                    filetree += f"<li class=\"sidebar\"><a href=\"/wiki/{file[0]}.html\">{file[1]}</a></li>\n"
 
 def FindFile(name):
     for root, subdirs, files in os.walk(src):
