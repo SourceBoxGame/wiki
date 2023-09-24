@@ -53,7 +53,7 @@ pre {
 }
 
 .active {
-  display: block;
+  display: block !important;
 }
 
 ul {
@@ -61,7 +61,8 @@ ul {
 }
 
 li ::marker {
-    color:#00000000
+    color:#00000000;
+    display:none;
 }
 
 li b::before{
@@ -72,10 +73,6 @@ li b::before{
     font-weight: 500;
 }
 
-li b.active
-{
-    display:inline;
-}
 
 li b.active::before
 {
@@ -88,6 +85,7 @@ li b.active::before
 
 li b {
     cursor: pointer;
+    display: block;
 }
 
 </style>
