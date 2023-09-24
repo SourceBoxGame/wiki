@@ -41,7 +41,7 @@
         }
         for (var i = 0; i < namelist.length; i++) 
         {
-            if(!namelist[i].toLowerCase().includes(searchtext)) continue;
+            if(namelist[i].toLowerCase().indexOf(searchtext) == -1) continue;
             var searchelement = document.createElement("li");
             var link = document.createElement("a");
             searchelement.appendChild(link);
