@@ -4,7 +4,7 @@ import os
 import re
 import shutil
 
-mark = markdown2.Markdown()
+mark = markdown2.Markdown(extras={"tables":True,"fenced-code-blocks":None,"code-friendly":True,"break-on-newline":True})
 
 rootpath = os.path.dirname(os.path.realpath(__file__))
 src = rootpath+"/src/"
@@ -78,11 +78,11 @@ for root, subdirs, files in os.walk(src):
         with open(fpath,"r") as f:
             with open(dst+fpath[len(src):].replace(".md",".html"), "w") as r:
                 rawmarkdown = f.read().replace("\r\n","\n")
-                smalls = re.findall(r"^\S+\n[(    )\t]",rawmarkdown,re.MULTILINE)
+                smalls = re.findall(r"^[^\s`]+\n```[\s\S]+?```",rawmarkdown,re.MULTILINE)
                 for small in smalls:
-                    smallstring = small.strip()
-                    whitespace = small[len(smallstring):]
-                    rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:16px;\">"+smallstring+"</small>\n"+whitespace)
+                    smallstring = small.split("\n",1)[0]
+                    smallcode = small[len(smallstring):]
+                    rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:8px;\">"+smallstring+"</small>"+smallcode)
                 links = re.findall(r'\[\[[^\[^\]]+\]\]', rawmarkdown)
                 for link in links:
                     if os.path.exists(os.path.join(src,link[2:-2]+".md")):

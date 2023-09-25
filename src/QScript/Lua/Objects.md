@@ -6,17 +6,18 @@ Another thing that is different from tables is that you cannot change the type o
 
 To create a new object, simply call the `object()` function with a class, and it will return a new object based on the class you gave it.
 
-    my_class = class() -- Start creating the class
+```lua
+my_class = class() -- Start creating the class
 
-    my_class.var = 10.0 -- Make a variable
+my_class.var = 10.0 -- Make a variable
 
-    finish(my_class) -- Finish the class
+finish(my_class) -- Finish the class
 
-    my_object = object(my_class) -- Make the object
+my_object = object(my_class) -- Make the object
+```
 
 Why would you use an object instead of a table? Well, you'll soon see why.
 
 ---
 
-[<- Prev][QScript/Lua/Classes] |
-[Next ->][QScript/Lua/Exports]
+[<- Prev][QScript/Lua/Classes] | [Next ->][QScript/Lua/Exports]
