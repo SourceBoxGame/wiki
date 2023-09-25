@@ -78,11 +78,9 @@ for root, subdirs, files in os.walk(src):
         with open(fpath,"r") as f:
             with open(dst+fpath[len(src):].replace(".md",".html"), "w") as r:
                 rawmarkdown = f.read().replace("\r\n","\n")
-                smalls = re.findall(r"^[^\s`]+\n```[\s\S]+?```",rawmarkdown,re.MULTILINE)
+                smalls = re.findall(r"^\$\_[\s\S]+\_\$$",rawmarkdown,re.MULTILINE)
                 for small in smalls:
-                    smallstring = small.split("\n",1)[0]
-                    smallcode = small[len(smallstring):]
-                    rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:8px;\">"+smallstring+"</small>"+smallcode)
+                    rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:8px;\">"+small[2:-2]+"</small>")
                 links = re.findall(r'\[\[[^\[^\]]+\]\]', rawmarkdown)
                 for link in links:
                     if os.path.exists(os.path.join(src,link[2:-2]+".md")):

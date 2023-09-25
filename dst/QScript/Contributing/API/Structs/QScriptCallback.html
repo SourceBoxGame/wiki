@@ -91,21 +91,21 @@ hr
 }
 
 code {
-    background-color: #00000040;
-    border-color: #00000040;
+    background-color: #383022;
+    border-color: #322b1e;
     border-style:solid;
     border-width:1px;
 }
 
-pre code
+pre
 {
     margin-left:16px;
-    background-color: #00000040;
-    border-color: #00000040;
+    background-color: #383022;
+    border-color: #322b1e;
     border-style:solid;
     border-width:1px;
     padding: 4px;
-    display:flow-root;
+    display:flex;
 }
 
 .nested
@@ -276,17 +276,17 @@ input:focus {
 }
 
 table {
-    border: #00000040 1px solid;
+    border: #312a1d 1px solid;
     border-top-color: #837f7a;
     border-left-color: #837f7a;
-    background-color: #00000020;
+    background-color: #423827;
 }
 
 th, td {
-    border: #00000040 1px solid;
+    border: #2b2519 1px solid;
     border-right-color: #837f7a;
     border-bottom-color: #837f7a;
-    background-color: #00000020;
+    background-color: #3a3122;
 }
 
 .sidebarroot
@@ -300,7 +300,7 @@ th, td {
 </style>
 <div>
     <div class="sidebarcontainer">
-        <span class="searchboxcontainer"><input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" class="searchbox"></span>
+        <span class="searchboxcontainer" onkeyup="updateSearch();"><input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" class="searchbox"></span>
         <nav>
             <ul class="sidebar sidebarroot" id="searchresults">
             </ul>
