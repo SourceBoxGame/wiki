@@ -4,7 +4,7 @@ import os
 import re
 import shutil
 
-mark = markdown2.Markdown()
+mark = markdown2.Markdown(extras=["tables","fenced-code-blocks","code-friendly"])
 
 rootpath = os.path.dirname(os.path.realpath(__file__))
 src = rootpath+"/src/"
@@ -51,7 +51,7 @@ def IterateFileTree(filedict,path,parentexpanded):
                 expandicon = "-"
                 expanded = True
             
-            filetree += f"<li class=\"sidebar\"><small class=\"liicon\">{expandicon}</small><span onmousedown=\"toggleTree(this);\" onmouseleave=\"unPress(this);\" onmouseup=\"unPress(this);\"><span onmousedown=\"Press(this);\" onmouseleave=\"unPress(this);\" onmouseup=\"unPress(this);\">{key}</span></span>\n<ul class=\"sidebar {classname}\">\n"
+            filetree += f"<li class=\"sidebar\"><small class=\"liicon\">{expandicon}</small><span class=\"buttoncontainer\" onmousedown=\"toggleTree(this);\" onmouseleave=\"unPress(this);\" onmouseup=\"unPress(this);\"><span onmousedown=\"Press(this);\" onmouseleave=\"unPress(this);\" onmouseup=\"unPress(this);\">{key}</span></span>\n<ul class=\"sidebar {classname}\">\n"
             IterateFileTree(value,path,expanded)
             filetree += f"</ul>\n</li>\n"
         else:
@@ -78,7 +78,7 @@ for root, subdirs, files in os.walk(src):
         with open(fpath,"r") as f:
             with open(dst+fpath[len(src):].replace(".md",".html"), "w") as r:
                 rawmarkdown = f.read().replace("\r\n","\n")
-                smalls = re.findall(r"^\S+\n[(    )\t]",rawmarkdown,re.MULTILINE)
+                smalls = re.findall(r"^\S+\n```",rawmarkdown,re.MULTILINE)
                 for small in smalls:
                     smallstring = small.strip()
                     whitespace = small[len(smallstring):]

@@ -5,26 +5,32 @@ The main big feature of QScript is the export system. It lets you export classes
 Let's say that you have a library called "MyLib.nut" inside a mod called "MyMod". This is what it contains:
 
 MyMod/MyLib.nut
-    class AdditionClass
+```
+class AdditionClass
+{
+    function Add(a,b)
     {
-        function Add(a,b)
-        {
-            return a + b;
-        }
+        return a + b;
     }
+}
 
-    Addition <- AdditionClass() -- Exports can only use global variables!
+Addition <- AdditionClass() -- Exports can only use global variables!
+```
 
 Now to export the `Addition` object, pass them to the `export()` function at the end of the file.
 
 MyMod/MyLib.nut
-    export(Addition);
+```
+export(Addition);
+```
 
 To import the exported elements in another file, simply use the `import()` function with the file path of the script you want to import from.
 
-    MyLib <- import("MyMod/MyLib.nut");
+```
+MyLib <- import("MyMod/MyLib.nut");
 
-    MyLib.Addition.Add(2,5); -- will return 7
+MyLib.Addition.Add(2,5); -- will return 7
+```
 
 ---
 

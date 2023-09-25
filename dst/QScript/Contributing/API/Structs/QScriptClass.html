@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <title>SourceBox Wiki</title>
 <script>
-    documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Private_Members.html', '/wiki/QScript/Contributing/Contributing.html', '/wiki/QScript/Contributing/API/qscript.html', '/wiki/QScript/Contributing/API/Structs/QCFunc.html', '/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html', '/wiki/QScript/Contributing/API/Structs/QScriptCallback.html', '/wiki/QScript/Contributing/API/Structs/QScriptClass.html', '/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html', '/wiki/QScript/Contributing/API/Structs/QType.html', '/wiki/QScript/Contributing/API/Structs/QValue.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Squirrel/Exports_And_Imports.html', '/wiki/QScript/Squirrel/Intro.html', '/wiki/QScript/Tutorial/Chapter1.html', '/wiki/QScript/Tutorial/Chapter2.html'];
-    namelist = ['Wiki Intro', 'QScript Intro', 'Private Members', 'Contributing', 'QScript API', 'QCFunc', 'QModuleDefFunc', 'QScriptCallback', 'QScriptClass', 'QScriptClassCreator', 'QType', 'QValue', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'Squirrel Exports and Imports', 'Squirrel Intro', 'QScript Tutorial Page 1: Mods', 'QScript Tutorial Page 2: Getting to work'];
+    documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Private_Members.html', '/wiki/QScript/Contributing/Contributing.html', '/wiki/QScript/Contributing/API/qscript.html', '/wiki/QScript/Contributing/API/Structs/QCFunc.html', '/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html', '/wiki/QScript/Contributing/API/Structs/QReturn.html', '/wiki/QScript/Contributing/API/Structs/QScriptArgs.html', '/wiki/QScript/Contributing/API/Structs/QScriptCallback.html', '/wiki/QScript/Contributing/API/Structs/QScriptClass.html', '/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html', '/wiki/QScript/Contributing/API/Structs/QType.html', '/wiki/QScript/Contributing/API/Structs/QValue.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Squirrel/Exports_And_Imports.html', '/wiki/QScript/Squirrel/Intro.html', '/wiki/QScript/Tutorial/Chapter1.html', '/wiki/QScript/Tutorial/Chapter2.html'];
+    namelist = ['Wiki Intro', 'QScript Intro', 'Private Members', 'Contributing', 'QScript API', 'QCFunc', 'QModuleDefFunc', 'QReturn', 'QScriptArgs', 'QScriptCallback', 'QScriptClass', 'QScriptClassCreator', 'QType', 'QValue', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'Squirrel Exports and Imports', 'Squirrel Intro', 'QScript Tutorial Page 1: Mods', 'QScript Tutorial Page 2: Getting to work'];
 
     function toggleTree(element)
     {
@@ -89,7 +89,7 @@ hr
     color: #463c2a;
 }
 
-pre
+pre code
 {
     margin-left:16px;
     background-color: #473c29;
@@ -98,6 +98,13 @@ pre
     border-width:1px;
     padding: 4px;
     display:flex;
+}
+
+code {
+    background-color: #00000040;
+    border-color: #00000040;
+    border-style:solid;
+    border-width:1px;
 }
 
 .nested
@@ -135,7 +142,7 @@ li.sidebar
     margin-right:2px;
 }
 
-li.sidebar span
+.buttoncontainer
 {
     -moz-user-select: none;
     user-select: none;
@@ -149,7 +156,7 @@ li.sidebar span
     margin: 2px;
 }
 
-li.sidebar span span
+.buttoncontainer span
 {
     -moz-user-select: none;
     user-select: none;
@@ -165,7 +172,7 @@ li.sidebar span span
     padding-right: 4px;
 }
 
-li.sidebar .spanactive
+.spanactive
 {
     border-left-color: black;
     border-top-color: black;
@@ -173,7 +180,7 @@ li.sidebar .spanactive
     border-bottom-color: white;
 }
 
-li.sidebar span .spanactive
+.buttoncontainer .spanactive
 {
     border: #463c2a 1px solid;
     border-right-color: #8d8881;
@@ -197,14 +204,27 @@ nav
     height: 100%;
 }
 
+
 a
 {
-    color: #f79b08;
+    border: #463c2a 1px solid;
+    background-color: #63553b;
+    color: white;
+    border-left-color: #8d8881;
+    border-top-color: #8d8881;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 a:visited
 {
-    color: #f79b08;
+    border: #463c2a 1px solid;
+    background-color: #63553b;
+    color: white;
+    border-left-color: #8d8881;
+    border-top-color: #8d8881;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 body 
@@ -261,6 +281,20 @@ input:focus {
     overflow:auto;
 }
 
+table {
+    border: #403624 1px solid;
+    border-top-color: #837f7a;
+    border-left-color: #837f7a;
+    background-color: #564A33;
+}
+
+th, td {
+    border: #00000040 1px solid;
+    border-right-color: #837f7a;
+    border-bottom-color: #837f7a;
+    background-color: #00000020;
+}
+
 </style>
 <div>
     <div class="sidebarcontainer">
@@ -270,20 +304,22 @@ input:focus {
             </ul>
             <ul class="sidebar" id="filetree">
                 <li class="sidebar"><a href="/wiki/index.html">Wiki Intro</a></li>
-<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">QScript</span></span>
+<li class="sidebar"><small class="liicon">-</small><span class="buttoncontainer" onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">QScript</span></span>
 <ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Introduction.html">QScript Intro</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Private_Members.html">Private Members</a></li>
-<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
+<li class="sidebar"><small class="liicon">-</small><span class="buttoncontainer" onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
 <ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Contributing.html">Contributing</a></li>
-<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">API</span></span>
+<li class="sidebar"><small class="liicon">-</small><span class="buttoncontainer" onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">API</span></span>
 <ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/qscript.html">QScript API</a></li>
-<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Structs</span></span>
+<li class="sidebar"><small class="liicon">-</small><span class="buttoncontainer" onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Structs</span></span>
 <ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QCFunc.html">QCFunc</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html">QModuleDefFunc</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QReturn.html">QReturn</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptArgs.html">QScriptArgs</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptCallback.html">QScriptCallback</a></li>
 <li class="sidebar"><b>QScriptClass</b></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html">QScriptClassCreator</a></li>
@@ -295,7 +331,7 @@ input:focus {
 </li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Lua</span></span>
+<li class="sidebar"><small class="liicon">+</small><span class="buttoncontainer" onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Lua</span></span>
 <ul class="sidebar nested">
 <li class="sidebar"><a href="/wiki/QScript/Lua/Classes.html">Lua Classes</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Lua/Exports.html">Lua Exports</a></li>
@@ -304,13 +340,13 @@ input:focus {
 <li class="sidebar"><a href="/wiki/QScript/Lua/Objects.html">Lua Objects</a></li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
+<li class="sidebar"><small class="liicon">+</small><span class="buttoncontainer" onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
 <ul class="sidebar nested">
 <li class="sidebar"><a href="/wiki/QScript/Squirrel/Exports_And_Imports.html">Squirrel Exports and Imports</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel Intro</a></li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Tutorial</span></span>
+<li class="sidebar"><small class="liicon">+</small><span class="buttoncontainer" onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Tutorial</span></span>
 <ul class="sidebar nested">
 <li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter1.html">QScript Tutorial Page 1: Mods</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter2.html">QScript Tutorial Page 2: Getting to work</a></li>
@@ -323,5 +359,7 @@ input:focus {
         </nav>
     </div>
 <h1>QScriptClass</h1>
+
+<p>QScriptClass is a handle to a QClass struct.</p>
 
 </div>
