@@ -97,6 +97,7 @@ pre
     border-style:solid;
     border-width:1px;
     padding: 4px;
+    display:flex;
 }
 
 .nested
@@ -123,8 +124,9 @@ li.sidebar ::marker
 li.sidebar
 {
     list-style-type: none !important;
-    border-bottom: #473c29 1px solid;
-    border-right: #473c29 1px solid;
+    background-color:#4A3F2C;
+    border-bottom: #312A1D 1px solid;
+    border-right: #312A1D 1px solid;
     border-left: 1px solid #8d8881;
     border-top: 1px solid #8d8881;
     padding-left: 2px;
@@ -221,11 +223,9 @@ body
     border-right-color: #837f7a;
     color: white;
     padding: 0px;
-    width:195px;
+    width:196px;
     height:16px;
     position: relative;
-    top:1px;
-    left:1px;
 }
 
 input:focus {
@@ -241,19 +241,35 @@ input:focus {
     position:relative;
     margin-left:auto;
     margin-right:auto;
-    height:19px;
+    height:18px;
     width:198px;
     display: inline-block;
 }
 
+.sidebarcontainer
+{
+    float:right;
+    display:block;
+    top: -16px;
+    right: -8px; 
+    margin-left: 8px;
+    width:200px;
+    border-color: black;
+    border-width: 1px;
+    border-style:solid;
+    position:relative;
+    overflow:auto;
+}
+
 </style>
-<div style="position:absolute; display:block; top: 0px; left: 0px; height:100%; width:200px;border-color: black; border-width: 1px; border-style:solid;">
-    <span class="searchboxcontainer"><input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" class="searchbox"></span>
-    <nav>
-        <ul class="sidebar" id="searchresults">
-        </ul>
-        <ul class="sidebar" id="filetree">
-            <li class="sidebar"><a href="/wiki/index.html">Wiki Intro</a></li>
+<div>
+    <div class="sidebarcontainer">
+        <span class="searchboxcontainer"><input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" class="searchbox"></span>
+        <nav>
+            <ul class="sidebar" id="searchresults">
+            </ul>
+            <ul class="sidebar" id="filetree">
+                <li class="sidebar"><a href="/wiki/index.html">Wiki Intro</a></li>
 <li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">QScript</span></span>
 <ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Introduction.html">QScript Intro</a></li>
@@ -288,10 +304,6 @@ input:focus {
 <li class="sidebar"><a href="/wiki/QScript/Lua/Objects.html">Lua Objects</a></li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Python</span></span>
-<ul class="sidebar nested">
-</ul>
-</li>
 <li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
 <ul class="sidebar nested active">
 <li class="sidebar"><b>Squirrel Exports and Imports</b></li>
@@ -307,10 +319,9 @@ input:focus {
 </ul>
 </li>
 
-        </ul>
-    </nav>
-</div>
-<div style="margin-left:200px;">
+            </ul>
+        </nav>
+    </div>
 <h1>Squirrel Exports and Imports</h1>
 
 <p>The main big feature of QScript is the export system. It lets you export classes, objects and functions which other files can import from your script.</p>
