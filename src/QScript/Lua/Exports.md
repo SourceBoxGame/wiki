@@ -31,5 +31,4 @@ That's great but now what can you do with the exported variables? That's the thi
 
 ---
 
-[<- Prev][QScript/Lua/Objects] |
-[Next ->][QScript/Lua/Imports]
+[<- Prev][QScript/Lua/Objects] | [Next ->][QScript/Lua/Imports]

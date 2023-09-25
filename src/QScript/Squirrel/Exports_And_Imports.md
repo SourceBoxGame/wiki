@@ -34,5 +34,4 @@ MyLib.Addition.Add(2,5); -- will return 7
 
 ---
 
-[<- Prev][QScript/Squirrel/Intro] |
-[Go back to the QScript Tutorial][QScript/Tutorial/Chapter1]
+[<- Prev][QScript/Squirrel/Intro] | [Go back to the QScript Tutorial][QScript/Tutorial/Chapter1]

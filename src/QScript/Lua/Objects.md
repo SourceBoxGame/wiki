@@ -20,5 +20,4 @@ Why would you use an object instead of a table? Well, you'll soon see why.
 
 ---
 
-[<- Prev][QScript/Lua/Classes] |
-[Next ->][QScript/Lua/Exports]
+[<- Prev][QScript/Lua/Classes] | [Next ->][QScript/Lua/Exports]

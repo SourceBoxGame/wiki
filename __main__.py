@@ -4,7 +4,7 @@ import os
 import re
 import shutil
 
-mark = markdown2.Markdown(extras=["tables","fenced-code-blocks","code-friendly"])
+mark = markdown2.Markdown(extras={"tables":True,"fenced-code-blocks":None,"code-friendly":True,"break-on-newline":True})
 
 rootpath = os.path.dirname(os.path.realpath(__file__))
 src = rootpath+"/src/"
@@ -51,7 +51,7 @@ def IterateFileTree(filedict,path,parentexpanded):
                 expandicon = "-"
                 expanded = True
             
-            filetree += f"<li class=\"sidebar\"><small class=\"liicon\">{expandicon}</small><span class=\"buttoncontainer\" onmousedown=\"toggleTree(this);\" onmouseleave=\"unPress(this);\" onmouseup=\"unPress(this);\"><span onmousedown=\"Press(this);\" onmouseleave=\"unPress(this);\" onmouseup=\"unPress(this);\">{key}</span></span>\n<ul class=\"sidebar {classname}\">\n"
+            filetree += f"<li class=\"sidebar\"><small class=\"liicon\">{expandicon}</small><span onmousedown=\"toggleTree(this);\" onmouseleave=\"unPress(this);\" onmouseup=\"unPress(this);\"><span onmousedown=\"Press(this);\" onmouseleave=\"unPress(this);\" onmouseup=\"unPress(this);\">{key}</span></span>\n<ul class=\"sidebar {classname}\">\n"
             IterateFileTree(value,path,expanded)
             filetree += f"</ul>\n</li>\n"
         else:
@@ -59,7 +59,7 @@ def IterateFileTree(filedict,path,parentexpanded):
                 if file[0] == currentfile:
                     filetree += f"<li class=\"sidebar\"><b>{file[1]}</b></li>\n"
                 else:
-                    filetree += f"<li class=\"sidebar\"><a href=\"/wiki/{file[0]}.html\">{file[1]}</a></li>\n"
+                    filetree += f"<li class=\"sidebar\"><span class=\"buttoncontainer\"><a href=\"/wiki/{file[0]}.html\">{file[1]}</a></span></li>\n"
 
 def FindFile(name):
     for root, subdirs, files in os.walk(src):
@@ -78,28 +78,29 @@ for root, subdirs, files in os.walk(src):
         with open(fpath,"r") as f:
             with open(dst+fpath[len(src):].replace(".md",".html"), "w") as r:
                 rawmarkdown = f.read().replace("\r\n","\n")
-                smalls = re.findall(r"^\S+\n```",rawmarkdown,re.MULTILINE)
+                smalls = re.findall(r"^[^\s`]+\n```[\s\S]+?```",rawmarkdown,re.MULTILINE)
                 for small in smalls:
-                    smallstring = small.strip()
-                    whitespace = small[len(smallstring):]
-                    rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:16px;\">"+smallstring+"</small>\n"+whitespace)
+                    smallstring = small.split("\n",1)[0]
+                    smallcode = small[len(smallstring):]
+                    rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:8px;\">"+smallstring+"</small>"+smallcode)
                 links = re.findall(r'\[\[[^\[^\]]+\]\]', rawmarkdown)
                 for link in links:
                     if os.path.exists(os.path.join(src,link[2:-2]+".md")):
-                        rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</a>")
+                        rawmarkdown = rawmarkdown.replace(link, "<span class=\"buttoncontainer\"><a href=\"/wiki/"+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</span></a>")
                     else:
                         foundpath = FindFile(link[2:-2]+".md").replace(".md","").replace("\\","/")
-                        rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+foundpath+".html\">"+foundpath.split("/")[-1]+"</a>")
+                        rawmarkdown = rawmarkdown.replace(link, "<span class=\"buttoncontainer\"><a href=\"/wiki/"+foundpath+".html\">"+foundpath.split("/")[-1]+"</span></a>")
                 links = re.findall(r'\[[^\[^\]]+\]\[[^\[^\]]+\]',rawmarkdown)
                 for link in links:
                     name = link[1:].split("]",1)[0]
                     href = link[1:].split("[",1)[1].split("]",1)[0]
                     if(href.startswith("http://") or href.startswith("https://")):
-                        rawmarkdown = rawmarkdown.replace(link, "<a href=\""+href+"\">"+name+"</a>")
+                        rawmarkdown = rawmarkdown.replace(link, "<span class=\"buttoncontainer\"><a href=\""+href+"\">"+name+"</a></span>")
                     elif os.path.exists(os.path.join(src,href+".md")):
-                        rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+href+".html\">"+name+"</a>")
+                        rawmarkdown = rawmarkdown.replace(link, "<span class=\"buttoncontainer\"><a href=\"/wiki/"+href+".html\">"+name+"</a></span>")
                     else:
                         foundpath = FindFile(href+".md").replace(".md","").replace("\\","/")
-                        rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+foundpath+".html\">"+name+"</a>")
+                        rawmarkdown = rawmarkdown.replace(link, "<span class=\"buttoncontainer\"><a href=\"/wiki/"+foundpath+".html\">"+name+"</a></span>")
                 converted = mark.convert(rawmarkdown)
+                
                 r.write(template.replace("@CONTENT",converted).replace("@FILETREE",filetree))
