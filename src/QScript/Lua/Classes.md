@@ -48,4 +48,6 @@ We can now move on to objects.
 
 ---
 
+$_FRAME
 [<- Prev][QScript/Lua/Intro] | [Next ->][QScript/Lua/Objects]
+_$

@@ -31,4 +31,6 @@ That's great but now what can you do with the exported variables? That's the thi
 
 ---
 
+$_FRAME
 [<- Prev][QScript/Lua/Objects] | [Next ->][QScript/Lua/Imports]
+_$

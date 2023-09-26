@@ -28,4 +28,6 @@ The reason why you can't use tables, is because objects, are actually shared! On
 
 ---
 
+$_FRAME
 [<- Prev][QScript/Lua/Exports] | [Go back to the QScript Tutorial][QScript/Tutorial/Chapter1]
+_$

@@ -20,4 +20,6 @@ Why would you use an object instead of a table? Well, you'll soon see why.
 
 ---
 
+$_FRAME
 [<- Prev][QScript/Lua/Classes] | [Next ->][QScript/Lua/Exports]
+_$

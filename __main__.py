@@ -74,7 +74,6 @@ def ConvertToHtml(fpath):
         rawmarkdown = f.read().replace("\r\n","\n")
         smalls = re.findall(r"^\$\_SMALL\s[\s\S]+?\s\_\$$",rawmarkdown,re.MULTILINE)
         for small in smalls:
-            print(small)
             rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:8px;\">"+small[8:-3]+"</small>")
         frames = re.findall(r"^\$_FRAME\s[\S\s]+?\s_\$$",rawmarkdown,re.MULTILINE)
         for frame in frames:
