@@ -111,4 +111,6 @@ We plan on adding actual interface functionality to the scripting languages, sho
 
 ---
 
+$_FRAME
 [<- Prev][QScriptRundown2] | [Next ->][QScriptRundown4]
+_$

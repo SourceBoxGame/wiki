@@ -9,4 +9,8 @@ Same thing with changing the class after it has been created. I have added a _fi
 
 The fact that you can inherit from a userdata, and then get another userdata instance should not be possible in regular Squirrel. This is an example of modifying the scripting language to fit our needs.
 
+---
+
+$_FRAME
 [<- Prev][QScriptRundown1] | [Next ->][QScriptRundown3]
+_$
