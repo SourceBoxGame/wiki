@@ -111,4 +111,4 @@ We plan on adding actual interface functionality to the scripting languages, sho
 
 ---
 
-[<- Prev][QScriptRundown2.md] | [Next ->][QScriptRundown4.md]
+[<- Prev][QScriptRundown2] | [Next ->][QScriptRundown4]

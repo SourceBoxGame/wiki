@@ -342,8 +342,8 @@ th, td
 <ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Introduction.html">QScript Intro</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Private_Members.html">Private Members</a></li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
-<ul class="sidebar nested">
+<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
+<ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Contributing.html">Contributing</a></li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">API</span></span>
 <ul class="sidebar nested">
@@ -377,11 +377,11 @@ th, td
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QObject.html">QObject</a></li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Rundown</span></span>
-<ul class="sidebar nested">
+<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Rundown</span></span>
+<ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown1.html">QScript Rundown Page 1</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown2.html">QScript Rundown Page 2</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown3.html">QScript Rundown Page 3</a></li>
+<li class="sidebar"><b>QScript Rundown Page 3</b></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown4.html">QScript Rundown Page 4</a></li>
 </ul>
 </li>
@@ -406,9 +406,9 @@ th, td
 <li class="sidebar"><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel Intro</a></li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Tutorial</span></span>
-<ul class="sidebar nested active">
-<li class="sidebar"><b>QScript Tutorial Page 1: Mods</b></li>
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Tutorial</span></span>
+<ul class="sidebar nested">
+<li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter1.html">QScript Tutorial Page 1: Mods</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter2.html">QScript Tutorial Page 2: Getting to work</a></li>
 </ul>
 </li>
@@ -418,28 +418,124 @@ th, td
             </ul>
         </nav>
     </div>
-<h1>QScript Tutorial Page 1: Mods</h1>
+<h1>QScript Rundown Page 3</h1>
 
-<p>QScript operates on "mods" which are folders inside the <code>sourcebox/mods/</code> directory.</p>
+<p>Lets talk about <code>QObject</code>s.</p>
 
-<p>Make a new directory called "TutorialMod" inside it. This will be the mod you will be operating on in the tutorial.</p>
+<p>A full <code>QObject</code> structure looks like this:</p>
 
-<p>Before you can begin coding anything, you have to pick a language.</p>
+<div class="codehilite">
+<pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">QObject</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">QClass</span><span class="o">*</span><span class="w"> </span><span class="n">cls</span><span class="p">;</span>
+<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="nc">QValue</span><span class="w"> </span><span class="n">vars</span><span class="p">[];</span>
+<span class="p">};</span>
+</code></pre>
+</div>
 
-<p>QScript currently supports the following lanugages:</p>
+<p>The structure is pretty complex.</p>
 
-<ul>
-<li><p><a href="/wiki/QScript/Lua/Intro.html">Lua</a></p></li>
-<li><p><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel</a></p></li>
-<li><p>Python</p></li>
-</ul>
+<p>Lets try to understand it piece by piece.</p>
 
-<p>Go to the language you will be using to learn about the QScript specific changes for each language.</p>
-
-<p>After you learned what you need to know, go to the next page.</p>
+<p>A <code>QObject</code> contains a pointer to a <code>QClass</code>. The <code>QClass</code> pointer is shared by <code>QObject</code>s which use the same class.<br />
+The QObject also contains a list of <a href="/wiki/QScript/Contributing/API/Structs/QValue.html">QValues</a> which are the individual unique variables of the QObject.</p>
 
 <hr />
 
-<p><a href="/wiki/QScript/Tutorial/Chapter2.html">Next -></a></p>
+<div class="codehilite">
+<pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">QClass</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">vars_count</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">QVar</span><span class="o">*</span><span class="w"> </span><span class="n">vars</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">methods_count</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">QFunction</span><span class="o">*</span><span class="w"> </span><span class="n">methods</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sigs_count</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">QInterface</span><span class="o">**</span><span class="w"> </span><span class="n">sigs</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>Let's go one level deeper and this is where we start to branch out. We will tackle <code>QVar* vars</code> first.</p>
+
+<hr />
+
+<div class="codehilite">
+<pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">QVar</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="nc">QType</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_private</span><span class="p">;</span>
+<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="nc">QValue</span><span class="w"> </span><span class="n">defaultval</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p><code>QVar</code> is basically a definition of a variable in a class. It stores the name, type, default value, etc. The <code>size</code> is used to determine the initial size of the string if the <code>type</code> is a <code>QType_String</code></p>
+
+<p>A <code>QClass</code> will store a pointer to a list of these, along with the amount. They are in fact, used as a reference to the <code>QValue vars[]</code> which are a 1:1 representation of the <code>QVar* vars*</code> in the class. In other words, an index in the <code>QVar* vars*</code> array in the <code>QClass</code> corresponds to the value in <code>QValue vars[]</code> in the QObject.</p>
+
+<hr />
+
+<div class="codehilite">
+<pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="nc">QFunctionType</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">QFunction_Native</span><span class="p">,</span>
+<span class="w">    </span><span class="n">QFunction_Scripting</span><span class="p">,</span>
+<span class="w">    </span><span class="n">QFunction_Module</span><span class="p">,</span>
+<span class="w">    </span><span class="n">QFunction_Void</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">QFunction</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">always_zero</span><span class="p">;</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="nc">QFunctionType</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">    </span><span class="k">union</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">QCFunc</span><span class="w"> </span><span class="n">func_native</span><span class="p">;</span>
+<span class="w">        </span><span class="n">QCallback</span><span class="o">*</span><span class="w"> </span><span class="n">func_scripting</span><span class="p">;</span>
+<span class="w">        </span><span class="n">QModuleFunction</span><span class="o">*</span><span class="w"> </span><span class="n">func_module</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">func_void</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p><code>QFunction</code> is more of a wrapper around multiple types of functions. The each slot in the union has a corresponding <code>QFunctionType</code>. But what you might notice is the <code>always_zero</code> variable. Why is it there?</p>
+
+<p>There is this quirk with scripting languages where they will write their entire scripting base libraries in their own C api, and then pass these base library functions as a normal pointer to the language. Which basically means that they will treat every C function as a regular function pointer and not a struct. Function pointers have a very special tendency to not be 0 (DUH).<br />
+We can take advantage of that by first checking if the <code>QFunction</code> <code>always_zero</code> is 0, and if its not, we just CALL the QFunction pointer directly. But if it is 0, we can be 99.9% sure that it is actually a <code>QFunction</code> struct and we can treat it as such.</p>
+
+<hr />
+
+<div class="codehilite">
+<pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="w">    </span><span class="k">enum</span><span class="w"> </span><span class="nc">QType</span><span class="o">*</span><span class="w"> </span><span class="n">types</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">QParams</span><span class="p">;</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">names</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">QParams</span><span class="o">*</span><span class="w"> </span><span class="n">args</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">QInterface</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>A <code>QInterface</code> is a list of function declarations. Not definitions. A <code>QInterface</code> only stores the name, and arguments of each function. The actual implementation is up to the <code>QClass</code>.</p>
+
+<p>When a <code>QClass</code> inherits from another <code>QClass</code>, it creates a new <code>QInterface</code> the parent <code>QInterface</code> <strong>pointers</strong> get copied into the interface array before the new one. Not the <code>QInterface</code>s themselves. This saves on memory.</p>
+
+<p>We plan on adding actual interface functionality to the scripting languages, showing off to functional scripting language developers what modern OOP languages can do.</p>
+
+<hr />
+
+<p><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown2.html">&lt;- Prev</a> | <a href="/wiki/QScript/Contributing/Rundown/QScriptRundown4.html">Next -></a></p>
 
 </div>

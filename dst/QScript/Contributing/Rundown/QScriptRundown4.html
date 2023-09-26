@@ -342,8 +342,8 @@ th, td
 <ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Introduction.html">QScript Intro</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Private_Members.html">Private Members</a></li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
-<ul class="sidebar nested">
+<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
+<ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Contributing.html">Contributing</a></li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">API</span></span>
 <ul class="sidebar nested">
@@ -377,12 +377,12 @@ th, td
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QObject.html">QObject</a></li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Rundown</span></span>
-<ul class="sidebar nested">
+<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Rundown</span></span>
+<ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown1.html">QScript Rundown Page 1</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown2.html">QScript Rundown Page 2</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown3.html">QScript Rundown Page 3</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown4.html">QScript Rundown Page 4</a></li>
+<li class="sidebar"><b>QScript Rundown Page 4</b></li>
 </ul>
 </li>
 </ul>
@@ -406,9 +406,9 @@ th, td
 <li class="sidebar"><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel Intro</a></li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Tutorial</span></span>
-<ul class="sidebar nested active">
-<li class="sidebar"><b>QScript Tutorial Page 1: Mods</b></li>
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Tutorial</span></span>
+<ul class="sidebar nested">
+<li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter1.html">QScript Tutorial Page 1: Mods</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter2.html">QScript Tutorial Page 2: Getting to work</a></li>
 </ul>
 </li>
@@ -418,28 +418,21 @@ th, td
             </ul>
         </nav>
     </div>
-<h1>QScript Tutorial Page 1: Mods</h1>
+<h1>QScript Rundown Page 4</h1>
 
-<p>QScript operates on "mods" which are folders inside the <code>sourcebox/mods/</code> directory.</p>
+<p>By the nature of QScript, it has been designed to be a appframework interface. It means that anything in the game can use it.</p>
 
-<p>Make a new directory called "TutorialMod" inside it. This will be the mod you will be operating on in the tutorial.</p>
+<p>If you want to use QScript in your own dll, first you have to connect to it.</p>
 
-<p>Before you can begin coding anything, you have to pick a language.</p>
+<p>Use the <code>CreateInterfaceFn</code> function with the <code>QSCRIPT_INTERFACE_VERSION</code> parameter which will return a (IQScript*).</p>
 
-<p>QScript currently supports the following lanugages:</p>
+<p><small style="position:relative; top:8px;">Remember to check for null values!</small></p>
 
-<ul>
-<li><p><a href="/wiki/QScript/Lua/Intro.html">Lua</a></p></li>
-<li><p><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel</a></p></li>
-<li><p>Python</p></li>
-</ul>
+<div class="codehilite">
+<pre><span></span><code><span class="n">qscript</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">IQScript</span><span class="o">*</span><span class="p">)</span><span class="n">appSystemFactory</span><span class="p">(</span><span class="n">QSCRIPT_INTERFACE_VERSION</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+</code></pre>
+</div>
 
-<p>Go to the language you will be using to learn about the QScript specific changes for each language.</p>
-
-<p>After you learned what you need to know, go to the next page.</p>
-
-<hr />
-
-<p><a href="/wiki/QScript/Tutorial/Chapter2.html">Next -></a></p>
+<p>(appSystemFactory is a <code>CreateInterfaceFn</code> you get in the <code>Init</code> or <code>Connect</code> function of a DLL class)</p>
 
 </div>
