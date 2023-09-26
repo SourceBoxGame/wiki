@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <title>SourceBox Wiki</title>
+<link rel="shortcut icon" href="/wiki/favicon.ico">
 <script>
     documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Private_Members.html', '/wiki/QScript/Contributing/Contributing.html', '/wiki/QScript/Contributing/API/qscript.html', '/wiki/QScript/Contributing/API/Structs/QCFunc.html', '/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html', '/wiki/QScript/Contributing/API/Structs/QReturn.html', '/wiki/QScript/Contributing/API/Structs/QScriptArgs.html', '/wiki/QScript/Contributing/API/Structs/QScriptCallback.html', '/wiki/QScript/Contributing/API/Structs/QScriptClass.html', '/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html', '/wiki/QScript/Contributing/API/Structs/QScriptFunction.html', '/wiki/QScript/Contributing/API/Structs/QScriptObject.html', '/wiki/QScript/Contributing/API/Structs/QType.html', '/wiki/QScript/Contributing/API/Structs/QValue.html', '/wiki/QScript/Contributing/Internals/IBaseScriptingInterface.html', '/wiki/QScript/Contributing/Internals/QArgs.html', '/wiki/QScript/Contributing/Internals/QCallback.html', '/wiki/QScript/Contributing/Internals/QClass.html', '/wiki/QScript/Contributing/Internals/QFunction.html', '/wiki/QScript/Contributing/Internals/QInterface.html', '/wiki/QScript/Contributing/Internals/QModule.html', '/wiki/QScript/Contributing/Internals/QObject.html', '/wiki/QScript/Contributing/Rundown/QScriptRundown1.html', '/wiki/QScript/Contributing/Rundown/QScriptRundown2.html', '/wiki/QScript/Contributing/Rundown/QScriptRundown3.html', '/wiki/QScript/Contributing/Rundown/QScriptRundown4.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Squirrel/Exports_And_Imports.html', '/wiki/QScript/Squirrel/Intro.html', '/wiki/QScript/Tutorial/Chapter1.html', '/wiki/QScript/Tutorial/Chapter2.html'];
     namelist = ['Wiki Intro', 'QScript Intro', 'Private Members', 'Contributing', 'QScript API', 'QCFunc', 'QModuleDefFunc', 'QReturn', 'QScriptArgs', 'QScriptCallback', 'QScriptClass', 'QScriptClassCreator', 'QScriptFunction', 'QScriptObject', 'QType', 'QValue', 'IBaseScriptingInterface', 'QArgs', 'QCallback', 'QClass', 'QFunction', 'QInterface', 'QModule', 'QObject', 'QScript Rundown Page 1', 'QScript Rundown Page 2', 'QScript Rundown Page 3', 'QScript Rundown Page 4', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'Squirrel Exports and Imports', 'Squirrel Intro', 'QScript Tutorial Page 1: Mods', 'QScript Tutorial Page 2: Getting to work'];
@@ -238,15 +239,15 @@ body
 
 .searchbox 
 {
-    background-color: #473c29;
-    border: #403624 1px solid;
-    border-bottom-color: #837f7a;
-    border-right-color: #837f7a;
+    border:none;
+    background-color: #3a3122;
     color: white;
     padding: 0px;
-    width:196px;
-    height:16px;
+    width:190px;
+    height:22px;
     position: relative;
+    padding-left:4px;
+    padding-right:4px;
 }
 
 input:focus {
@@ -255,17 +256,19 @@ input:focus {
 
 .searchboxcontainer 
 {
-    background-color: #473c29;
-    border: black 1px solid;
-    border-bottom-color: white;
-    border-right-color: white;
+    border: #2b2519 1px solid;
+    border-top-color: #837f7a;
+    border-left-color: #837f7a;
+    background-color: #3a3122;
     position:relative;
     margin-left:auto;
-    margin-right:auto;
-    height:18px;
+    margin-right:0px;
+    height:24px;
     width:198px;
-    display: inline-block;
+    position: absolute;
+    right: 9px;
 }
+
 
 .sidebarcontainer
 {
@@ -328,11 +331,32 @@ th, td
     text-align: center;
 }
 
+.topbar
+{
+    width:100%;
+    height:24px;
+    border: #312a1d 1px solid;
+    border-top-color: #837f7a;
+    border-left-color: #837f7a;
+    background-color: #423827;
+    margin-left:-2px;
+}
+
+.topbarelement
+{
+    border: #2b2519 1px solid;
+    border-top-color: #837f7a;
+    border-left-color: #837f7a;
+    background-color: #3a3122;
+}
 
 </style>
+<div class="topbar">
+<img class="topbarelement" src="/wiki/sourceboxicon.png">
+<span class="searchboxcontainer" onkeyup="updateSearch();"><input class="searchbox" type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" class="searchbox"></span>
+</div>
 <div>
     <div class="sidebarcontainer">
-        <span class="searchboxcontainer" onkeyup="updateSearch();"><input type="text" placeholder="search..." autocomplete="off" id="searchbox" oninput="updateSearch();" class="searchbox"></span>
         <nav>
             <ul class="sidebar sidebarroot" id="searchresults">
             </ul>
