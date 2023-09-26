@@ -1,12 +1,14 @@
 # QModuleDefFunc
 
-    struct QModuleDefFunc
-    {
-        QCFunc func;
-        const char* name;
-        enum QType ret;
-        const char* types;
-    };
+```cpp
+struct QModuleDefFunc
+{
+    QCFunc func;
+    const char* name;
+    enum QType ret;
+    const char* types;
+};
+```
 
 QModuleDefFunc is used for defining functions that QScript will bind to the scripting languages.
 
@@ -14,14 +16,7 @@ QModuleDefFunc is used for defining functions that QScript will bind to the scri
 
 Here is a list of all the types and their characters:
 
-|char | [[QType]] |
-|---|----------------|
-| `s` | `QType_String`   |
-| `i` | `QType_Int`      |
-| `f` | `QType_Float`    |
-| `o` | `QType_Object`   |
-| `b` | `QType_Bool`     |
-| `p` | `QType_Function` |
+{{CharToType}}
 
 `ret` is what the function will return.
 
@@ -29,9 +24,11 @@ Here is a list of all the types and their characters:
 
 Here is an example list of QModuleDefFuncs which you pass to [CreateModule][QScript/Contributing/API/qscript]
 
-    static QModuleDefFunc sourcebox_client[] = {
-        {QScriptClientMsg,"Msg",QType_None,"s"},
-        {RegisterCmd,"RegisterCmd",QType_None,"sp"},
-        {0,0,QType_None,0}
-        //{RegisterCmd,"RegisterCmd",QType_None,"sp"},
-    };
+```cpp
+static QModuleDefFunc sourcebox_client[] = {
+    {QScriptClientMsg,"Msg",QType_None,"s"},
+    {RegisterCmd,"RegisterCmd",QType_None,"sp"},
+    {0,0,QType_None,0}
+    //{RegisterCmd,"RegisterCmd",QType_None,"sp"},
+};
+```

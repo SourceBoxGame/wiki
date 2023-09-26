@@ -1,10 +1,12 @@
 # QReturn
 
-    struct QReturn
-    {
-        enum QType type;
-        QValue value;
-    };
+```cpp
+struct QReturn
+{
+    enum QType type;
+    QValue value;
+};
+```
 
 QReturn is a struct which contains a [[QType]] and a [[QValue]]
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <title>SourceBox Wiki</title>
 <script>
-    documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Private_Members.html', '/wiki/QScript/Contributing/Contributing.html', '/wiki/QScript/Contributing/API/qscript.html', '/wiki/QScript/Contributing/API/Structs/QCFunc.html', '/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html', '/wiki/QScript/Contributing/API/Structs/QReturn.html', '/wiki/QScript/Contributing/API/Structs/QScriptArgs.html', '/wiki/QScript/Contributing/API/Structs/QScriptCallback.html', '/wiki/QScript/Contributing/API/Structs/QScriptClass.html', '/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html', '/wiki/QScript/Contributing/API/Structs/QType.html', '/wiki/QScript/Contributing/API/Structs/QValue.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Squirrel/Exports_And_Imports.html', '/wiki/QScript/Squirrel/Intro.html', '/wiki/QScript/Tutorial/Chapter1.html', '/wiki/QScript/Tutorial/Chapter2.html'];
-    namelist = ['Wiki Intro', 'QScript Intro', 'Private Members', 'Contributing', 'QScript API', 'QCFunc', 'QModuleDefFunc', 'QReturn', 'QScriptArgs', 'QScriptCallback', 'QScriptClass', 'QScriptClassCreator', 'QType', 'QValue', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'Squirrel Exports and Imports', 'Squirrel Intro', 'QScript Tutorial Page 1: Mods', 'QScript Tutorial Page 2: Getting to work'];
+    documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Private_Members.html', '/wiki/QScript/Contributing/Contributing.html', '/wiki/QScript/Contributing/API/qscript.html', '/wiki/QScript/Contributing/API/Structs/QCFunc.html', '/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html', '/wiki/QScript/Contributing/API/Structs/QReturn.html', '/wiki/QScript/Contributing/API/Structs/QScriptArgs.html', '/wiki/QScript/Contributing/API/Structs/QScriptCallback.html', '/wiki/QScript/Contributing/API/Structs/QScriptClass.html', '/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html', '/wiki/QScript/Contributing/API/Structs/QScriptFunction.html', '/wiki/QScript/Contributing/API/Structs/QScriptObject.html', '/wiki/QScript/Contributing/API/Structs/QType.html', '/wiki/QScript/Contributing/API/Structs/QValue.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Squirrel/Exports_And_Imports.html', '/wiki/QScript/Squirrel/Intro.html', '/wiki/QScript/Tutorial/Chapter1.html', '/wiki/QScript/Tutorial/Chapter2.html'];
+    namelist = ['Wiki Intro', 'QScript Intro', 'Private Members', 'Contributing', 'QScript API', 'QCFunc', 'QModuleDefFunc', 'QReturn', 'QScriptArgs', 'QScriptCallback', 'QScriptClass', 'QScriptClassCreator', 'QScriptFunction', 'QScriptObject', 'QType', 'QValue', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'Squirrel Exports and Imports', 'Squirrel Intro', 'QScript Tutorial Page 1: Mods', 'QScript Tutorial Page 2: Getting to work'];
 
     function toggleTree(element)
     {
@@ -106,6 +106,16 @@ pre
     border-width:1px;
     padding: 4px;
     display:flex;
+}
+
+pre code
+{
+    border: none !important;
+}
+
+td code {
+    background-color: #312A1D;
+    border-color: #2b2519;
 }
 
 .nested
@@ -275,14 +285,16 @@ input:focus {
     padding:0px;
 }
 
-table {
+table 
+{
     border: #312a1d 1px solid;
     border-top-color: #837f7a;
     border-left-color: #837f7a;
     background-color: #423827;
 }
 
-th, td {
+th, td 
+{
     border: #2b2519 1px solid;
     border-right-color: #837f7a;
     border-bottom-color: #837f7a;
@@ -294,6 +306,26 @@ th, td {
     padding-left:0px !important;
     margin:0px;
     overflow:hidden;
+}
+
+.framed 
+{
+    border: #312a1d 1px solid;
+    border-top-color: #837f7a;
+    border-left-color: #837f7a;
+    background-color: #423827;
+    display: flow-root;
+}
+
+.framed .framed
+{
+    border: #2b2519 1px solid;
+    border-right-color: #837f7a;
+    border-bottom-color: #837f7a;
+    background-color: #3a3122;
+    margin:4px;
+    padding:2px;
+    text-align: center;
 }
 
 
@@ -325,6 +357,8 @@ th, td {
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptCallback.html">QScriptCallback</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClass.html">QScriptClass</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html">QScriptClassCreator</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptFunction.html">QScriptFunction</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptObject.html">QScriptObject</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QType.html">QType</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QValue.html">QValue</a></li>
 </ul>
@@ -340,10 +374,6 @@ th, td {
 <li class="sidebar"><a href="/wiki/QScript/Lua/Imports.html">Lua Imports</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Lua/Intro.html">Lua Intro</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Lua/Objects.html">Lua Objects</a></li>
-</ul>
-</li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Python</span></span>
-<ul class="sidebar nested">
 </ul>
 </li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
@@ -370,8 +400,10 @@ th, td {
 
 <h2>CreateModule</h2>
 
-<pre><code>QScriptModule CreateModule(const char* name, QModuleDefFunc* funcs)
+<div class="codehilite">
+<pre><span></span><code><span class="n">QScriptModule</span><span class="w"> </span><span class="n">CreateModule</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">QModuleDefFunc</span><span class="o">*</span><span class="w"> </span><span class="n">funcs</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>Takes a name, and a <a href="/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html">QModuleDefFunc</a> list, returns a QScriptModule</p>
 
@@ -379,8 +411,10 @@ th, td {
 
 <h2>LoadMods</h2>
 
-<pre><code>void LoadMods(const char* filename)
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">LoadMods</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>Will load a file inside the root of every mod.</p>
 
@@ -388,8 +422,10 @@ th, td {
 
 <h2>LoadModsInDirectory</h2>
 
-<pre><code>void LoadModsInDirectory(const char* folder, const char* filename)
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">LoadModsInDirectory</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">folder</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>Acts like LoadMods, but loads a file inside a subdirectory. (mods/*/folder/filename.*)</p>
 
@@ -397,8 +433,10 @@ th, td {
 
 <h2>StartClass</h2>
 
-<pre><code>QScriptClassCreator StartClass(const char* name, QScriptClass parent)
+<div class="codehilite">
+<pre><span></span><code><span class="n">QScriptClassCreator</span><span class="w"> </span><span class="n">StartClass</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">QScriptClass</span><span class="w"> </span><span class="n">parent</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>Returns a <a href="/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html">QScriptClassCreator</a></p>
 
@@ -406,8 +444,10 @@ th, td {
 
 <h2>AddMethod</h2>
 
-<pre><code>void AddMethod(QScriptClassCreator creator, const char* name, QType* params, QCFunc func, bool is_private = false)
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">AddMethod</span><span class="p">(</span><span class="n">QScriptClassCreator</span><span class="w"> </span><span class="n">creator</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">QType</span><span class="o">*</span><span class="w"> </span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="n">QCFunc</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_private</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>Adds a method to the class creator. Takes a name, <a href="/wiki/QScript/Contributing/API/Structs/QType.html">QType</a> list which will be the parameters, <a href="/wiki/QScript/Contributing/API/Structs/QCFunc.html">QCFunc</a> which will be the callback, and an optional <a href="/wiki/QScript/Private_Members.html">is_private</a> bool.</p>
 
@@ -415,8 +455,10 @@ th, td {
 
 <h2>AddScriptingMethod</h2>
 
-<pre><code>void AddScriptingMethod(QScriptClassCreator creator, const char* name, QScriptCallback callback, bool is_private)
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">AddScriptingMethod</span><span class="p">(</span><span class="n">QScriptClassCreator</span><span class="w"> </span><span class="n">creator</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">QScriptCallback</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_private</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>Adds a scripting language method for the class creator. Takes a name, <a href="/wiki/QScript/Contributing/API/Structs/QScriptCallback.html">QScriptCallback</a> which will be called when the method is called, and an optional is_private bool.</p>
 
@@ -424,8 +466,10 @@ th, td {
 
 <h2>AddVariable</h2>
 
-<pre><code>void AddVariable(QScriptClassCreator creator, const char* name, QType type, QValue defaultval, bool is_private)
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">AddVariable</span><span class="p">(</span><span class="n">QScriptClassCreator</span><span class="w"> </span><span class="n">creator</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">QType</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">QValue</span><span class="w"> </span><span class="n">defaultval</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_private</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>Adds a variable with a default value to the class creator. Takes a name, QType, <a href="/wiki/QScript/Contributing/API/Structs/QValue.html">QValue</a>, and an optional is_private bool.</p>
 
@@ -435,8 +479,10 @@ th, td {
 
 <h2>AddString</h2>
 
-<pre><code>void AddString(QScriptClassCreator creator, const char* name, const char* defaultval, bool is_private)
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">AddString</span><span class="p">(</span><span class="n">QScriptClassCreator</span><span class="w"> </span><span class="n">creator</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">defaultval</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">is_private</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>Adds a string variable to the class creator. Takes a name, a default value and an optional is_private bool.</p>
 
@@ -444,10 +490,192 @@ th, td {
 
 <h2>FinishClass</h2>
 
-<pre><code>QScriptClass FinishClass(QScriptClassCreator creator)
+<div class="codehilite">
+<pre><span></span><code><span class="n">QScriptClass</span><span class="w"> </span><span class="n">FinishClass</span><span class="p">(</span><span class="n">QScriptClassCreator</span><span class="w"> </span><span class="n">creator</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>Finishes the class creator and returns a <a href="/wiki/QScript/Contributing/API/Structs/QScriptClass.html">QScriptClass</a>. Will delete the creator.</p>
+
+<hr />
+
+<h2>CreateObject</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="n">QScriptObject</span><span class="w"> </span><span class="n">CreateObject</span><span class="p">(</span><span class="n">QScriptClass</span><span class="w"> </span><span class="n">cls</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Returns a new <a href="/wiki/QScript/Contributing/API/Structs/QScriptObject.html">QScriptObject</a>. Takes a class from which to create the object.</p>
+
+<hr />
+
+<h2>InitializeObject</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">InitializeObject</span><span class="p">(</span><span class="n">QScriptObject</span><span class="w"> </span><span class="n">object</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Initializes a QScriptObject. Call every time after you create one! Takes a QScriptObject.</p>
+
+<hr />
+
+<h2>GetObjectValueIndex</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">GetObjectValueIndex</span><span class="p">(</span><span class="n">QScriptObject</span><span class="w"> </span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Gets a index of a variable from the object. Takes a QScriptObject and a name of the variable.</p>
+
+<hr />
+
+<h2>SetObjectValue</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">SetObjectValue</span><span class="p">(</span><span class="n">QScriptObject</span><span class="w"> </span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">QValue</span><span class="w"> </span><span class="n">val</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Sets a value inside an object. Takes the object, the index of the value, and a QValue. Do <strong>not</strong> use this function for setting strings.</p>
+
+<hr />
+
+<h2>SetObjectString</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">SetObjectString</span><span class="p">(</span><span class="n">QScriptObject</span><span class="w"> </span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Sets a string inside an object. Takes the object, the index of the value and a string.</p>
+
+<hr />
+
+<h2>GetObjectValue</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="n">QValue</span><span class="w"> </span><span class="n">GetObjectValue</span><span class="p">(</span><span class="n">QScriptObject</span><span class="w"> </span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Gets a value from an object. Returns a QValue and takes the object and the index of the value.</p>
+
+<hr />
+
+<h2>GetObjectValueType</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="n">QType</span><span class="w"> </span><span class="n">GetObjectValueType</span><span class="p">(</span><span class="n">QScriptObject</span><span class="w"> </span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Gets the type of a value in the object. Takes the object and the index of the value. Returns a QType.</p>
+
+<hr />
+
+<h2>GetObjectMethodIndex</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">GetObjectMethodIndex</span><span class="p">(</span><span class="n">QScriptObject</span><span class="w"> </span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Gets the index of a method in the object. Takes the object and the name of the method.</p>
+
+<hr />
+
+<h2>GetObjectMethod</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="n">QScriptFunction</span><span class="w"> </span><span class="n">GetObjectMethod</span><span class="p">(</span><span class="n">QScriptObject</span><span class="w"> </span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Gets the method of an object. Takes the object and the index of the method. Returns a <a href="/wiki/QScript/Contributing/API/Structs/QScriptFunction.html">QScriptFunction</a>.</p>
+
+<hr />
+
+<h2>CallObjectMethod</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="n">QReturn</span><span class="w"> </span><span class="nf">CallObjectMethod</span><span class="p">(</span><span class="n">QScriptObject</span><span class="w"> </span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">QScriptArgs</span><span class="w"> </span><span class="n">arguments</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Calls a method from the object. Takes the object, index of the method and <a href="/wiki/QScript/Contributing/API/Structs/QScriptArgs.html">QScriptArgs</a>.</p>
+
+<hr />
+
+<h2>GetArgValue</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="n">QValue</span><span class="w"> </span><span class="n">GetArgValue</span><span class="p">(</span><span class="n">QScriptArgs</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Gets a value from some arguments. Takes a QScriptArgs and the argument index.</p>
+
+<hr />
+
+<h2>GetArgType</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="n">QType</span><span class="w"> </span><span class="n">GetArgType</span><span class="p">(</span><span class="n">QScriptArgs</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Gets the type of the argument from a QScriptArgs. Takes a QScriptArgs and the argument index.</p>
+
+<hr />
+
+<h2>CallFunction</h2>
+
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">CallFunction</span><span class="p">(</span><span class="n">QScriptFunction</span><span class="w"> </span><span class="n">function</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</code></pre>
+</div>
+
+<p>Calls a QScriptFunction, takes a string which represents the types of arguments and a vararg which are the arguments themselves. The arguments are normal C++ types.</p>
+
+<p>Here is a table of chars to QType</p>
+
+<table>
+<thead>
+<tr>
+  <th>char</th>
+  <th><a href="/wiki/QScript/Contributing/API/Structs/QType.html">QType</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>s</code></td>
+  <td><code>QType_String</code></td>
+</tr>
+<tr>
+  <td><code>i</code></td>
+  <td><code>QType_Int</code></td>
+</tr>
+<tr>
+  <td><code>f</code></td>
+  <td><code>QType_Float</code></td>
+</tr>
+<tr>
+  <td><code>o</code></td>
+  <td><code>QType_Object</code></td>
+</tr>
+<tr>
+  <td><code>b</code></td>
+  <td><code>QType_Bool</code></td>
+</tr>
+<tr>
+  <td><code>p</code></td>
+  <td><code>QType_Function</code></td>
+</tr>
+</tbody>
+</table>
 
 <hr />
 

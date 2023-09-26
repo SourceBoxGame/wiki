@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <title>SourceBox Wiki</title>
 <script>
-    documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Private_Members.html', '/wiki/QScript/Contributing/Contributing.html', '/wiki/QScript/Contributing/API/qscript.html', '/wiki/QScript/Contributing/API/Structs/QCFunc.html', '/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html', '/wiki/QScript/Contributing/API/Structs/QReturn.html', '/wiki/QScript/Contributing/API/Structs/QScriptArgs.html', '/wiki/QScript/Contributing/API/Structs/QScriptCallback.html', '/wiki/QScript/Contributing/API/Structs/QScriptClass.html', '/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html', '/wiki/QScript/Contributing/API/Structs/QType.html', '/wiki/QScript/Contributing/API/Structs/QValue.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Squirrel/Exports_And_Imports.html', '/wiki/QScript/Squirrel/Intro.html', '/wiki/QScript/Tutorial/Chapter1.html', '/wiki/QScript/Tutorial/Chapter2.html'];
-    namelist = ['Wiki Intro', 'QScript Intro', 'Private Members', 'Contributing', 'QScript API', 'QCFunc', 'QModuleDefFunc', 'QReturn', 'QScriptArgs', 'QScriptCallback', 'QScriptClass', 'QScriptClassCreator', 'QType', 'QValue', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'Squirrel Exports and Imports', 'Squirrel Intro', 'QScript Tutorial Page 1: Mods', 'QScript Tutorial Page 2: Getting to work'];
+    documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Private_Members.html', '/wiki/QScript/Contributing/Contributing.html', '/wiki/QScript/Contributing/API/qscript.html', '/wiki/QScript/Contributing/API/Structs/QCFunc.html', '/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html', '/wiki/QScript/Contributing/API/Structs/QReturn.html', '/wiki/QScript/Contributing/API/Structs/QScriptArgs.html', '/wiki/QScript/Contributing/API/Structs/QScriptCallback.html', '/wiki/QScript/Contributing/API/Structs/QScriptClass.html', '/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html', '/wiki/QScript/Contributing/API/Structs/QScriptFunction.html', '/wiki/QScript/Contributing/API/Structs/QScriptObject.html', '/wiki/QScript/Contributing/API/Structs/QType.html', '/wiki/QScript/Contributing/API/Structs/QValue.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Squirrel/Exports_And_Imports.html', '/wiki/QScript/Squirrel/Intro.html', '/wiki/QScript/Tutorial/Chapter1.html', '/wiki/QScript/Tutorial/Chapter2.html'];
+    namelist = ['Wiki Intro', 'QScript Intro', 'Private Members', 'Contributing', 'QScript API', 'QCFunc', 'QModuleDefFunc', 'QReturn', 'QScriptArgs', 'QScriptCallback', 'QScriptClass', 'QScriptClassCreator', 'QScriptFunction', 'QScriptObject', 'QType', 'QValue', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'Squirrel Exports and Imports', 'Squirrel Intro', 'QScript Tutorial Page 1: Mods', 'QScript Tutorial Page 2: Getting to work'];
 
     function toggleTree(element)
     {
@@ -106,6 +106,16 @@ pre
     border-width:1px;
     padding: 4px;
     display:flex;
+}
+
+pre code
+{
+    border: none !important;
+}
+
+td code {
+    background-color: #312A1D;
+    border-color: #2b2519;
 }
 
 .nested
@@ -275,14 +285,16 @@ input:focus {
     padding:0px;
 }
 
-table {
+table 
+{
     border: #312a1d 1px solid;
     border-top-color: #837f7a;
     border-left-color: #837f7a;
     background-color: #423827;
 }
 
-th, td {
+th, td 
+{
     border: #2b2519 1px solid;
     border-right-color: #837f7a;
     border-bottom-color: #837f7a;
@@ -294,6 +306,26 @@ th, td {
     padding-left:0px !important;
     margin:0px;
     overflow:hidden;
+}
+
+.framed 
+{
+    border: #312a1d 1px solid;
+    border-top-color: #837f7a;
+    border-left-color: #837f7a;
+    background-color: #423827;
+    display: flow-root;
+}
+
+.framed .framed
+{
+    border: #2b2519 1px solid;
+    border-right-color: #837f7a;
+    border-bottom-color: #837f7a;
+    background-color: #3a3122;
+    margin:4px;
+    padding:2px;
+    text-align: center;
 }
 
 
@@ -325,6 +357,8 @@ th, td {
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptCallback.html">QScriptCallback</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClass.html">QScriptClass</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html">QScriptClassCreator</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptFunction.html">QScriptFunction</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptObject.html">QScriptObject</a></li>
 <li class="sidebar"><b>QType</b></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QValue.html">QValue</a></li>
 </ul>
@@ -340,10 +374,6 @@ th, td {
 <li class="sidebar"><a href="/wiki/QScript/Lua/Imports.html">Lua Imports</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Lua/Intro.html">Lua Intro</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Lua/Objects.html">Lua Objects</a></li>
-</ul>
-</li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Python</span></span>
-<ul class="sidebar nested">
 </ul>
 </li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
@@ -366,17 +396,19 @@ th, td {
     </div>
 <h1>QType</h1>
 
-<pre><code>enum QType
-{
-    QType_None = 0,
-    QType_Int,
-    QType_Float,
-    QType_String,
-    QType_Bool,
-    QType_Object,
-    QType_Function
-};
+<div class="codehilite">
+<pre><span></span><code><span class="k">enum</span><span class="w"> </span><span class="nc">QType</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">QType_None</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">QType_Int</span><span class="p">,</span>
+<span class="w">    </span><span class="n">QType_Float</span><span class="p">,</span>
+<span class="w">    </span><span class="n">QType_String</span><span class="p">,</span>
+<span class="w">    </span><span class="n">QType_Bool</span><span class="p">,</span>
+<span class="w">    </span><span class="n">QType_Object</span><span class="p">,</span>
+<span class="w">    </span><span class="n">QType_Function</span>
+<span class="p">};</span>
 </code></pre>
+</div>
 
 <p>QType is an enum which represents a QScript type.</p>
 

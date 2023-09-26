@@ -33,14 +33,16 @@ The `class()` function accepts another class as a parameter which will "inherit"
 
 In simple terms, every function and variable from the other class, will be copied into yours, without having to specify them all over again.
 
-    another_class = class(my_class) -- Inherits from my_class
+```lua
+another_class = class(my_class) -- Inherits from my_class
 
-    another_class.MyVar = 20.0 -- Changes the existing variable
-    function another_class.NewFunc(self,b) -- Makes a new function
-        return self.MyVar-b
-    end
+another_class.MyVar = 20.0 -- Changes the existing variable
+function another_class.NewFunc(self,b) -- Makes a new function
+    return self.MyVar-b
+end
 
-    finish(another_class) -- Finishes it
+finish(another_class) -- Finishes it
+```
 
 We can now move on to objects.
 
