@@ -400,7 +400,7 @@ th, td
 
 <p>Let's say that you have a library called "MyLib.nut" inside a mod called "MyMod". This is what it contains:</p>
 
-<p>$_MyMod/MyLib.nut_$</p>
+<p><small style="position:relative; top:8px;">MyMod/MyLib.nut _$</p>
 
 <pre><code>class AdditionClass
 {
@@ -415,7 +415,7 @@ Addition &lt;- AdditionClass() -- Exports can only use global variables!
 
 <p>Now to export the <code>Addition</code> object, pass them to the <code>export()</code> function at the end of the file.</p>
 
-<p>$_MyMod/MyLib.nut_$</p>
+<p>$_SMALL MyMod/MyLib.nut</small></p>
 
 <pre><code>export(Addition);
 </code></pre>

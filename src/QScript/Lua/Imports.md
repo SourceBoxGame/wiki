@@ -5,7 +5,7 @@ Now that you have exported some variables, something's gotta import them! As alw
 Let's say that you have made a file called "MyLib.lua" inside a mod called "MyMod". These are the contents of it:
 
 
-$_MyMod/MyLib.lua_$
+$_SMALL MyMod/MyLib.lua _$
 ```lua
 function add(a,b)
     return a + b
