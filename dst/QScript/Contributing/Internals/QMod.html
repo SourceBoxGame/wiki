@@ -395,8 +395,8 @@ th, td
 <ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Introduction.html">QScript Intro</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Private_Members.html">Private Members</a></li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
-<ul class="sidebar nested">
+<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
+<ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Contributing.html">Contributing</a></li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">API</span></span>
 <ul class="sidebar nested">
@@ -418,8 +418,8 @@ th, td
 </li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Internals</span></span>
-<ul class="sidebar nested">
+<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Internals</span></span>
+<ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/IBaseScriptingInterface.html">IBaseScriptingInterface</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QArgs.html">QArgs</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QCallback.html">QCallback</a></li>
@@ -427,7 +427,7 @@ th, td
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QFunction.html">QFunction</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QInstance.html">QInstance</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QInterface.html">QInterface</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QMod.html">QMod</a></li>
+<li class="sidebar"><b>QMod</b></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QModule.html">QModule</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QObject.html">QObject</a></li>
 </ul>
@@ -453,9 +453,9 @@ th, td
 <li class="sidebar"><a href="/wiki/QScript/Lua/Objects.html">Lua Objects</a></li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
-<ul class="sidebar nested active">
-<li class="sidebar"><b>Squirrel Exports and Imports</b></li>
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
+<ul class="sidebar nested">
+<li class="sidebar"><a href="/wiki/QScript/Squirrel/Exports_And_Imports.html">Squirrel Exports and Imports</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel Intro</a></li>
 </ul>
 </li>
@@ -471,41 +471,12 @@ th, td
             </ul>
         </nav>
     </div>
-<h1>Squirrel Exports and Imports</h1>
+<h1>QMod</h1>
 
-<p>The main big feature of QScript is the export system. It lets you export classes, objects and functions which other files can import from your script.</p>
+<div class="framed"markdown="1"><div class="framedinside"><p>This page has NO CONTENT! You should write some by making a pull request on our <a href="https://github.com/SourceBoxGame/wiki">GitHub repository</a></p></div></div>
 
-<p>Let's say that you have a library called "MyLib.nut" inside a mod called "MyMod". This is what it contains:</p>
+<div class="framed"markdown="1"><div class="framedinside"><p>This page has NO CONTENT! You should write some by making a pull request on our <a href="https://github.com/SourceBoxGame/wiki">GitHub repository</a></p></div></div>
 
-<p><small style="position:relative; top:8px; margin:0px;">MyMod/MyLib.nut</small></p>
-
-<pre><code>class AdditionClass
-{
-    function Add(a,b)
-    {
-        return a + b;
-    }
-}
-
-Addition &lt;- AdditionClass() -- Exports can only use global variables!
-</code></pre>
-
-<p>Now to export the <code>Addition</code> object, pass them to the <code>export()</code> function at the end of the file.</p>
-
-<p><small style="position:relative; top:8px; margin:0px;">MyMod/MyLib.nut</small></p>
-
-<pre><code>export(Addition);
-</code></pre>
-
-<p>To import the exported elements in another file, simply use the <code>import()</code> function with the file path of the script you want to import from.</p>
-
-<pre><code>MyLib &lt;- import("MyMod/MyLib.nut");
-
-MyLib.Addition.Add(2,5); -- will return 7
-</code></pre>
-
-<hr />
-
-<p><a href="/wiki/QScript/Squirrel/Intro.html">&lt;- Prev</a> | <a href="/wiki/QScript/Tutorial/Chapter1.html">Go back to the QScript Tutorial</a></p>
+<div class="framed"markdown="1"><div class="framedinside" markdown="1"><p>This page has NO CONTENT! You should write some by making a pull request on our <a href="https://github.com/SourceBoxGame/wiki">GitHub repository</a></p></div></div>
 
 </div>

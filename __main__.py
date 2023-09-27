@@ -4,7 +4,7 @@ import os
 import re
 import shutil
 
-mark = markdown2.Markdown(extras={"tables":True,"fenced-code-blocks":None,"code-friendly":True,"break-on-newline":True})
+mark = markdown2.Markdown(extras={"tables":True,"fenced-code-blocks":None,"code-friendly":True,"break-on-newline":True,"markdown-in-html":True})
 
 rootpath = os.path.dirname(os.path.realpath(__file__))
 src = rootpath+"/src/"
@@ -69,43 +69,85 @@ def FindFile(name):
             return os.path.join(root[lensrc:],name)
     raise SyntaxError(f"Could not find file {name}!")
 
+
+def ConvertStrToHtml(rawmarkdown : str):
+    i = 0
+    indentlevel = 0
+    beginningdollar = -1
+    tocut = -1
+    dollarname = ""
+    while True:
+        if rawmarkdown[i:i+2] == '$_':
+            if indentlevel == 0:
+                tocut = i
+                dollarsnippet = rawmarkdown[i+2:]
+                if dollarsnippet.startswith("SMALL"):
+                    dollarname = "SMALL"
+                    #closelist.append("SMALL")
+                    #rawmarkdown = rawmarkdown[:i]+"<small style=\"position:relative; top:8px; margin:0px;\">"+rawmarkdown[i+7:]
+                    i+=5
+                elif dollarsnippet.startswith("FRAME"):
+                    dollarname = "FRAME"
+                    #closelist.append("FRAME")
+                    #rawmarkdown = rawmarkdown[:i]+"<div class=\"framed\"markdown=\"1\"><div class=\"framedinside\" markdown=\"1\">"+rawmarkdown[i+7:]
+                    i+=5
+                elif dollarsnippet.startswith("INLINEFRAME"):
+                    dollarname = "INLINEFRAME"
+                    #closelist.append("INLINEFRAME")
+                    #rawmarkdown = rawmarkdown[:i]+"<div class=\"inlineframed\" markdown=\"1\"><div class=\"inlineframedinside\" markdown=\"1\">"+rawmarkdown[i+13:]
+                    i+=11
+                beginningdollar = i+2
+            indentlevel += 1
+            i+=2
+        elif rawmarkdown[i:i+2] == "_$":
+            indentlevel -= 1
+            if indentlevel == 0 and beginningdollar != -1:
+                snippet = ConvertStrToHtml(rawmarkdown[beginningdollar:i].strip()).strip()
+                if dollarname == "SMALL":
+                    snippet = "<small style=\"position:relative; top:8px; margin:0px;\">"+snippet.strip().replace("<p>","").replace("</p>","")+"</small>"
+                elif dollarname == "FRAME":
+                    snippet = "<div class=\"framed\"markdown=\"1\"><div class=\"framedinside\" markdown=\"1\">"+snippet+"</div></div>"
+                elif dollarname == "INLINEFRAME":
+                    snippet = "<div class=\"inlineframed\"markdown=\"1\"><div class=\"inlineframedinside\" markdown=\"1\">"+snippet+"</div></div>"
+                rawmarkdown = rawmarkdown[:tocut]+snippet+rawmarkdown[i+2:]
+                beginningdollar = -1
+                i = tocut+len(snippet)-3
+            i+=2
+        i+=1
+        if i>len(rawmarkdown):
+            break
+    links = re.findall(r'\[\[[^\[^\]]+\]\]', rawmarkdown)
+    for link in links:
+        if os.path.exists(os.path.join(src,link[2:-2]+".md")):
+            rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</a>")
+        else:
+            foundpath = FindFile(link[2:-2]+".md").replace(".md","").replace("\\","/")
+            rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+foundpath+".html\">"+foundpath.split("/")[-1]+"</a>")
+    embeds = re.findall(r'\{\{[^\{^\}]+\}\}', rawmarkdown)
+    for embed in embeds:
+        if os.path.exists(os.path.join(src,embed[2:-2]+".embed.md")):
+            rawmarkdown = rawmarkdown.replace(embed, ConvertToHtml(src+embed[2:-2]+".embed.md"))
+        else:
+            foundpath = FindFile(embed[2:-2]+".embed.md").replace("\\","/")
+            rawmarkdown = rawmarkdown.replace(embed, ConvertToHtml(src+foundpath))
+    links = re.findall(r'\[[^\[^\]]+\]\[[^\[^\]]+\]',rawmarkdown)
+    for link in links:
+        name = link[1:].split("]",1)[0]
+        href = link[1:].split("[",1)[1].split("]",1)[0]
+        if(href.startswith("http://") or href.startswith("https://")):
+            rawmarkdown = rawmarkdown.replace(link, "<a href=\""+href+"\">"+name+"</a>")
+        elif os.path.exists(os.path.join(src,href+".md")):
+            rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+href+".html\">"+name+"</a>")
+        else:
+            foundpath = FindFile(href+".md").replace(".md","").replace("\\","/")
+            rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+foundpath+".html\">"+name+"</a>")
+    converted = mark.convert(rawmarkdown)
+    return converted
+
 def ConvertToHtml(fpath):
     with open(fpath,"r") as f:
         rawmarkdown = f.read().replace("\r\n","\n")
-        smalls = re.findall(r"^\$\_SMALL\s[\s\S]+?\s\_\$$",rawmarkdown,re.MULTILINE)
-        for small in smalls:
-            rawmarkdown = rawmarkdown.replace(small, "<small style=\"position:relative; top:8px;\">"+small[8:-3]+"</small>")
-        frames = re.findall(r"^\$_FRAME\s[\S\s]+?\s_\$$",rawmarkdown,re.MULTILINE)
-        for frame in frames:
-            framed_string = frame[8:-3]
-            rawmarkdown = rawmarkdown.replace(frame,f"<div class=\"framed\"><div class=\"framed\">{framed_string}</div></div>")
-        links = re.findall(r'\[\[[^\[^\]]+\]\]', rawmarkdown)
-        for link in links:
-            if os.path.exists(os.path.join(src,link[2:-2]+".md")):
-                rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+link[2:-2]+".html\">"+link[2:-2].split("/")[-1]+"</a>")
-            else:
-                foundpath = FindFile(link[2:-2]+".md").replace(".md","").replace("\\","/")
-                rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+foundpath+".html\">"+foundpath.split("/")[-1]+"</a>")
-        embeds = re.findall(r'\{\{[^\{^\}]+\}\}', rawmarkdown)
-        for embed in embeds:
-            if os.path.exists(os.path.join(src,embed[2:-2]+".embed.md")):
-                rawmarkdown = rawmarkdown.replace(embed, ConvertToHtml(src+embed[2:-2]+".embed.md"))
-            else:
-                foundpath = FindFile(embed[2:-2]+".embed.md").replace("\\","/")
-                rawmarkdown = rawmarkdown.replace(embed, ConvertToHtml(src+foundpath))
-        links = re.findall(r'\[[^\[^\]]+\]\[[^\[^\]]+\]',rawmarkdown)
-        for link in links:
-            name = link[1:].split("]",1)[0]
-            href = link[1:].split("[",1)[1].split("]",1)[0]
-            if(href.startswith("http://") or href.startswith("https://")):
-                rawmarkdown = rawmarkdown.replace(link, "<a href=\""+href+"\">"+name+"</a>")
-            elif os.path.exists(os.path.join(src,href+".md")):
-                rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+href+".html\">"+name+"</a>")
-            else:
-                foundpath = FindFile(href+".md").replace(".md","").replace("\\","/")
-                rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+foundpath+".html\">"+name+"</a>")
-        converted = mark.convert(rawmarkdown)
-        return converted
+        return ConvertStrToHtml(rawmarkdown)
         
 
 template = template.replace("@DOCUMENTLIST",str(documentlist)).replace("@NAMELIST",str(namelist))

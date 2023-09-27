@@ -10,5 +10,12 @@ $_SMALL Remember to check for null values! _$
 ```cpp
 qscript = (IQScript*)appSystemFactory(QSCRIPT_INTERFACE_VERSION, NULL)
 ```
-
 (appSystemFactory is a `CreateInterfaceFn` you get in the `Init` or `Connect` function of a DLL class)
+
+The interfaces work the same way.
+
+---
+
+$_FRAME
+[<- Prev][QScriptRundown3] | [Next ->][QScriptRundown5]
+_$

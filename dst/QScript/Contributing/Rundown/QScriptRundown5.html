@@ -395,8 +395,8 @@ th, td
 <ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Introduction.html">QScript Intro</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Private_Members.html">Private Members</a></li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
-<ul class="sidebar nested">
+<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
+<ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Contributing.html">Contributing</a></li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">API</span></span>
 <ul class="sidebar nested">
@@ -432,13 +432,13 @@ th, td
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QObject.html">QObject</a></li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Rundown</span></span>
-<ul class="sidebar nested">
+<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Rundown</span></span>
+<ul class="sidebar nested active">
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown1.html">QScript Rundown Page 1</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown2.html">QScript Rundown Page 2</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown3.html">QScript Rundown Page 3</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown4.html">QScript Rundown Page 4</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown5.html">QScript Rundown Page 5</a></li>
+<li class="sidebar"><b>QScript Rundown Page 5</b></li>
 <li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown6.html">QScript Rundown Page 6</a></li>
 </ul>
 </li>
@@ -453,9 +453,9 @@ th, td
 <li class="sidebar"><a href="/wiki/QScript/Lua/Objects.html">Lua Objects</a></li>
 </ul>
 </li>
-<li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
-<ul class="sidebar nested active">
-<li class="sidebar"><b>Squirrel Exports and Imports</b></li>
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
+<ul class="sidebar nested">
+<li class="sidebar"><a href="/wiki/QScript/Squirrel/Exports_And_Imports.html">Squirrel Exports and Imports</a></li>
 <li class="sidebar"><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel Intro</a></li>
 </ul>
 </li>
@@ -471,41 +471,50 @@ th, td
             </ul>
         </nav>
     </div>
-<h1>Squirrel Exports and Imports</h1>
+<h1>QScript Rundown Page 5</h1>
 
-<p>The main big feature of QScript is the export system. It lets you export classes, objects and functions which other files can import from your script.</p>
+<p>Scripting language interfaces inherit from <a href="/wiki/QScript/Contributing/Internals/IBaseScriptingInterface.html">IBaseScriptingInterface</a>. While there is not one way of implementing the interface, it is best to learn how each one works. Let's start with Lua.</p>
 
-<p>Let's say that you have a library called "MyLib.nut" inside a mod called "MyMod". This is what it contains:</p>
+<p>When the game starts up, it will initialize all DLLs. During initialization, it will call the <code>Connect()</code> function which you use to connect to other DLLs. Lua connects to tier1, filesystem, and qscript itself. It also sets the <code>current_interface</code> variable to <code>this</code>.</p>
 
-<p><small style="position:relative; top:8px; margin:0px;">MyMod/MyLib.nut</small></p>
+<p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
 
-<pre><code>class AdditionClass
-{
-    function Add(a,b)
-    {
-        return a + b;
-    }
-}
-
-Addition &lt;- AdditionClass() -- Exports can only use global variables!
+<div class="codehilite">
+<pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">CLuaInterface::Connect</span><span class="p">(</span><span class="n">CreateInterfaceFn</span><span class="w"> </span><span class="n">factory</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ConnectTier1Libraries</span><span class="p">(</span><span class="o">&amp;</span><span class="n">factory</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ConVar_Register</span><span class="p">();</span>
+<span class="w">    </span><span class="n">g_pFullFileSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">IFileSystem</span><span class="o">*</span><span class="p">)</span><span class="n">factory</span><span class="p">(</span><span class="n">FILESYSTEM_INTERFACE_VERSION</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">g_pQScript</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">IQScript</span><span class="o">*</span><span class="p">)</span><span class="n">factory</span><span class="p">(</span><span class="n">QSCRIPT_INTERFACE_VERSION</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">current_interface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
-<p>Now to export the <code>Addition</code> object, pass them to the <code>export()</code> function at the end of the file.</p>
+<p>You are expected to return <code>true</code> if nothing went wrong during connection.</p>
 
-<p><small style="position:relative; top:8px; margin:0px;">MyMod/MyLib.nut</small></p>
+<p>After that, other DLLs will call to QScript add their modules. That happens during the <code>Init()</code> phase.<br />
+After each module is loaded (at <code>PostInit()</code>), QScript will call <code>ImportModules()</code> with the modules <code>CUtlVector&lt;QModule*&gt;*</code> you can safely save it to the interface object if you dont want to do anything during import.</p>
 
-<pre><code>export(Addition);
+<p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
+
+<div class="codehilite">
+<pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">CLuaInterface::ImportModules</span><span class="p">(</span><span class="n">CUtlVector</span><span class="o">&lt;</span><span class="n">QModule</span><span class="o">*&gt;*</span><span class="w"> </span><span class="n">modules</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">m_modules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">modules</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre>
+</div>
 
-<p>To import the exported elements in another file, simply use the <code>import()</code> function with the file path of the script you want to import from.</p>
+<p>After that, there come the mods. QScript will just give you the file path of the mod along with the <a href="/wiki/QScript/Contributing/Internals/QMod.html">QMod</a> itself. You must check whether the extension matches your scripting language. If it does not, return 0, but if it does, load the file yourself and return a <a href="/wiki/QScript/Contributing/Internals/QInstance.html">QInstance</a> pointer.</p>
 
-<pre><code>MyLib &lt;- import("MyMod/MyLib.nut");
-
-MyLib.Addition.Add(2,5); -- will return 7
-</code></pre>
+<p>This is where things start getting complicated.</p>
 
 <hr />
 
-<p><a href="/wiki/QScript/Squirrel/Intro.html">&lt;- Prev</a> | <a href="/wiki/QScript/Tutorial/Chapter1.html">Go back to the QScript Tutorial</a></p>
+<div class="framed"markdown="1"><div class="framedinside"><p><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown4.html">&lt;- Prev</a> | <a href="/wiki/QScript/Contributing/Rundown/QScriptRundown6.html">Next -></a></p></div></div>
+
+<div class="framed"markdown="1"><div class="framedinside" markdown="1"><p><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown4.html">&lt;- Prev</a> | <a href="/wiki/QScript/Contributing/Rundown/QScriptRundown6.html">Next -></a></p></div></div>
 
 </div>
