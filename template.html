@@ -96,6 +96,7 @@ code {
     border-color: #322b1e;
     border-style:solid;
     border-width:1px;
+    overflow:scroll;
 }
 
 pre
@@ -343,8 +344,9 @@ th, td
     border-top-color: #837f7a;
     border-left-color: #837f7a;
     background-color: #423827;
-    display:inline-block;
+    display:block;
     margin:4px;
+    max-width:min-content;
 }
 
 .inlineframedinside
@@ -358,6 +360,30 @@ th, td
 }
 
 
+.rightframed
+{
+    border: #312a1d 1px solid;
+    border-top-color: #837f7a;
+    border-left-color: #837f7a;
+    background-color: #423827;
+    float:right;
+    max-width:max-content;
+}
+
+.rightframedinside
+{
+    border: #312a1d 1px solid;
+    border-right-color: #837f7a;
+    border-bottom-color: #837f7a;
+    background-color: #4b402d;
+    margin:4px;
+    padding:8px;
+}
+
+.rightframedinside p
+{
+    margin:0px;
+}
 
 .topbar
 {

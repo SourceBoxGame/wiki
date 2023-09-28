@@ -33,9 +33,10 @@ for root, subdirs, files in os.walk(src):
         fpath = os.path.join(root, file)
         with open(fpath,"r") as f:
             rawmarkdown = f.read()
-            if(rawmarkdown[0:2] != "# "):
+            h1s = rawmarkdown.split("#")
+            if(len(h1s) == 1):
                 raise SyntaxError(".md file must begin with a # marked title!")
-            name = rawmarkdown[2:].split("\n",1)[0]
+            name = h1s[1].split("\n",1)[0]
             p[''].append([os.path.join(root[lensrc:],file.replace(".md","")).replace("\\","/"),name])
             documentlist.append("/wiki/"+fpath[len(src):].replace(".md",".html").replace("\\","/"))
             namelist.append(name)
@@ -93,6 +94,9 @@ def ConvertStrToHtml(rawmarkdown : str):
                 elif dollarsnippet.startswith("COMMENT"):
                     dollarname = "COMMENT"
                     i+=7
+                elif dollarsnippet.startswith("RIGHTFRAME"):
+                    dollarname = "RIGHTFRAME"
+                    i+=10
                 beginningdollar = i+2
             indentlevel += 1
             i+=2
@@ -106,8 +110,10 @@ def ConvertStrToHtml(rawmarkdown : str):
                     snippet = "<small style=\"position:relative; top:8px; margin:0px;\">"+snippet.strip().replace("<p>","").replace("</p>","")+"</small>"
                 elif dollarname == "FRAME":
                     snippet = "<div class=\"framed\"><div class=\"framedinside\">"+snippet+"</div></div>"
+                elif dollarname == "RIGHTFRAME":
+                    snippet = "<div class=\"rightframed\"><div class=\"rightframedinside\">"+snippet+"</div></div>"
                 elif dollarname == "INLINEFRAME":
-                    snippet = "<div class=\"inlineframed\"><div class=\"inlineframedinside\">"+snippet+"</div></div>"
+                    snippet = f"<div class=\"inlineframed\"><div class=\"inlineframedinside\">{snippet}</div></div>"
                 rawmarkdown = rawmarkdown[:tocut]+snippet+rawmarkdown[i+2:]
                 beginningdollar = -1
                 i = tocut+len(snippet)-3

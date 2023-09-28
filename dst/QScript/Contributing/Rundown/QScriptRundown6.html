@@ -3,7 +3,7 @@
 <link rel="shortcut icon" href="/wiki/favicon.ico">
 <script>
     documentlist = ['/wiki/index.html', '/wiki/QScript/Introduction.html', '/wiki/QScript/Private_Members.html', '/wiki/QScript/Contributing/Contributing.html', '/wiki/QScript/Contributing/API/qscript.html', '/wiki/QScript/Contributing/API/Structs/QCFunc.html', '/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html', '/wiki/QScript/Contributing/API/Structs/QReturn.html', '/wiki/QScript/Contributing/API/Structs/QScriptArgs.html', '/wiki/QScript/Contributing/API/Structs/QScriptCallback.html', '/wiki/QScript/Contributing/API/Structs/QScriptClass.html', '/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html', '/wiki/QScript/Contributing/API/Structs/QScriptFunction.html', '/wiki/QScript/Contributing/API/Structs/QScriptObject.html', '/wiki/QScript/Contributing/API/Structs/QType.html', '/wiki/QScript/Contributing/API/Structs/QValue.html', '/wiki/QScript/Contributing/Internals/IBaseScriptingInterface.html', '/wiki/QScript/Contributing/Internals/QArgs.html', '/wiki/QScript/Contributing/Internals/QCallback.html', '/wiki/QScript/Contributing/Internals/QClass.html', '/wiki/QScript/Contributing/Internals/QFunction.html', '/wiki/QScript/Contributing/Internals/QInstance.html', '/wiki/QScript/Contributing/Internals/QInterface.html', '/wiki/QScript/Contributing/Internals/QMod.html', '/wiki/QScript/Contributing/Internals/QModule.html', '/wiki/QScript/Contributing/Internals/QObject.html', '/wiki/QScript/Contributing/Rundown/QScriptRundown1.html', '/wiki/QScript/Contributing/Rundown/QScriptRundown2.html', '/wiki/QScript/Contributing/Rundown/QScriptRundown3.html', '/wiki/QScript/Contributing/Rundown/QScriptRundown4.html', '/wiki/QScript/Contributing/Rundown/QScriptRundown5.html', '/wiki/QScript/Contributing/Rundown/QScriptRundown6.html', '/wiki/QScript/Lua/Classes.html', '/wiki/QScript/Lua/Exports.html', '/wiki/QScript/Lua/Imports.html', '/wiki/QScript/Lua/Intro.html', '/wiki/QScript/Lua/Objects.html', '/wiki/QScript/Squirrel/Exports_And_Imports.html', '/wiki/QScript/Squirrel/Intro.html', '/wiki/QScript/Tutorial/Chapter1.html', '/wiki/QScript/Tutorial/Chapter2.html'];
-    namelist = ['Wiki Intro', 'QScript Intro', 'Private Members', 'Contributing', 'QScript API', 'QCFunc', 'QModuleDefFunc', 'QReturn', 'QScriptArgs', 'QScriptCallback', 'QScriptClass', 'QScriptClassCreator', 'QScriptFunction', 'QScriptObject', 'QType', 'QValue', 'IBaseScriptingInterface', 'QArgs', 'QCallback', 'QClass', 'QFunction', 'QInstance', 'QInterface', 'QMod', 'QModule', 'QObject', 'QScript Rundown Page 1', 'QScript Rundown Page 2', 'QScript Rundown Page 3', 'QScript Rundown Page 4', 'QScript Rundown Page 5', 'QScript Rundown Page 6', 'Lua Classes', 'Lua Exports', 'Lua Imports', 'Lua Intro', 'Lua Objects', 'Squirrel Exports and Imports', 'Squirrel Intro', 'QScript Tutorial Page 1: Mods', 'QScript Tutorial Page 2: Getting to work'];
+    namelist = [' Wiki Intro', ' QScript Intro', ' Private Members', ' Contributing', ' QScript API', ' QCFunc', ' QModuleDefFunc', ' QReturn', ' QScriptArgs', ' QScriptCallback', ' QScriptClass', ' QScriptClassCreator', ' QScriptFunction', ' QScriptObject', ' QType', ' QValue', ' IBaseScriptingInterface', ' QArgs', ' QCallback', ' QClass', ' QFunction', ' QInstance', ' QInterface', ' QMod', ' QModule', ' QObject', ' QScript Rundown Page 1', ' QScript Rundown Page 2', ' QScript Rundown Page 3', ' QScript Rundown Page 4', ' QScript Rundown Page 5', ' QScript Rundown Page 6', ' Lua Classes', ' Lua Exports', ' Lua Imports', ' Lua Intro', ' Lua Objects', ' Squirrel Exports and Imports', ' Squirrel Intro', ' QScript Tutorial Page 1: Mods', ' QScript Tutorial Page 2: Getting to work'];
 
     function toggleTree(element)
     {
@@ -96,6 +96,7 @@ code {
     border-color: #322b1e;
     border-style:solid;
     border-width:1px;
+    overflow:scroll;
 }
 
 pre
@@ -343,8 +344,9 @@ th, td
     border-top-color: #837f7a;
     border-left-color: #837f7a;
     background-color: #423827;
-    display:inline-block;
+    display:block;
     margin:4px;
+    max-width:min-content;
 }
 
 .inlineframedinside
@@ -358,6 +360,30 @@ th, td
 }
 
 
+.rightframed
+{
+    border: #312a1d 1px solid;
+    border-top-color: #837f7a;
+    border-left-color: #837f7a;
+    background-color: #423827;
+    float:right;
+    max-width:max-content;
+}
+
+.rightframedinside
+{
+    border: #312a1d 1px solid;
+    border-right-color: #837f7a;
+    border-bottom-color: #837f7a;
+    background-color: #4b402d;
+    margin:4px;
+    padding:8px;
+}
+
+.rightframedinside p
+{
+    margin:0px;
+}
 
 .topbar
 {
@@ -390,79 +416,83 @@ th, td
             <ul class="sidebar sidebarroot" id="searchresults">
             </ul>
             <ul class="sidebar sidebarroot" id="filetree">
-                <li class="sidebar"><a href="/wiki/index.html">Wiki Intro</a></li>
+                <li class="sidebar"><a href="/wiki/index.html"> Wiki Intro</a></li>
 <li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">QScript</span></span>
 <ul class="sidebar nested active">
-<li class="sidebar"><a href="/wiki/QScript/Introduction.html">QScript Intro</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Private_Members.html">Private Members</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Introduction.html"> QScript Intro</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Private_Members.html"> Private Members</a></li>
 <li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Contributing</span></span>
 <ul class="sidebar nested active">
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Contributing.html">Contributing</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Contributing.html"> Contributing</a></li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">API</span></span>
 <ul class="sidebar nested">
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/qscript.html">QScript API</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/qscript.html"> QScript API</a></li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Structs</span></span>
 <ul class="sidebar nested">
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QCFunc.html">QCFunc</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html">QModuleDefFunc</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QReturn.html">QReturn</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptArgs.html">QScriptArgs</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptCallback.html">QScriptCallback</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClass.html">QScriptClass</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html">QScriptClassCreator</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptFunction.html">QScriptFunction</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptObject.html">QScriptObject</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QType.html">QType</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QValue.html">QValue</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QCFunc.html"> QCFunc</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QModuleDefFunc.html"> QModuleDefFunc</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QReturn.html"> QReturn</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptArgs.html"> QScriptArgs</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptCallback.html"> QScriptCallback</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClass.html"> QScriptClass</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptClassCreator.html"> QScriptClassCreator</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptFunction.html"> QScriptFunction</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QScriptObject.html"> QScriptObject</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QType.html"> QType</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/API/Structs/QValue.html"> QValue</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Internals</span></span>
 <ul class="sidebar nested">
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/IBaseScriptingInterface.html">IBaseScriptingInterface</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QArgs.html">QArgs</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QCallback.html">QCallback</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QClass.html">QClass</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QFunction.html">QFunction</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QInstance.html">QInstance</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QInterface.html">QInterface</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QMod.html">QMod</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QModule.html">QModule</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QObject.html">QObject</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/IBaseScriptingInterface.html"> IBaseScriptingInterface</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QArgs.html"> QArgs</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QCallback.html"> QCallback</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QClass.html"> QClass</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QFunction.html"> QFunction</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QInstance.html"> QInstance</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QInterface.html"> QInterface</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QMod.html"> QMod</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QModule.html"> QModule</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Internals/QObject.html"> QObject</a></li>
 </ul>
 </li>
 <li class="sidebar"><small class="liicon">-</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Rundown</span></span>
 <ul class="sidebar nested active">
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown1.html">QScript Rundown Page 1</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown2.html">QScript Rundown Page 2</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown3.html">QScript Rundown Page 3</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown4.html">QScript Rundown Page 4</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown5.html">QScript Rundown Page 5</a></li>
-<li class="sidebar"><b>QScript Rundown Page 6</b></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown1.html"> QScript Rundown Page 1</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown2.html"> QScript Rundown Page 2</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown3.html"> QScript Rundown Page 3</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown4.html"> QScript Rundown Page 4</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Contributing/Rundown/QScriptRundown5.html"> QScript Rundown Page 5</a></li>
+<li class="sidebar"><b> QScript Rundown Page 6</b></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Lua</span></span>
 <ul class="sidebar nested">
-<li class="sidebar"><a href="/wiki/QScript/Lua/Classes.html">Lua Classes</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Lua/Exports.html">Lua Exports</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Lua/Imports.html">Lua Imports</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Lua/Intro.html">Lua Intro</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Lua/Objects.html">Lua Objects</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Lua/Classes.html"> Lua Classes</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Lua/Exports.html"> Lua Exports</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Lua/Imports.html"> Lua Imports</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Lua/Intro.html"> Lua Intro</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Lua/Objects.html"> Lua Objects</a></li>
+</ul>
+</li>
+<li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Python</span></span>
+<ul class="sidebar nested">
 </ul>
 </li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Squirrel</span></span>
 <ul class="sidebar nested">
-<li class="sidebar"><a href="/wiki/QScript/Squirrel/Exports_And_Imports.html">Squirrel Exports and Imports</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Squirrel/Intro.html">Squirrel Intro</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Squirrel/Exports_And_Imports.html"> Squirrel Exports and Imports</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Squirrel/Intro.html"> Squirrel Intro</a></li>
 </ul>
 </li>
 <li class="sidebar"><small class="liicon">+</small><span onmousedown="toggleTree(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);"><span onmousedown="Press(this);" onmouseleave="unPress(this);" onmouseup="unPress(this);">Tutorial</span></span>
 <ul class="sidebar nested">
-<li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter1.html">QScript Tutorial Page 1: Mods</a></li>
-<li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter2.html">QScript Tutorial Page 2: Getting to work</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter1.html"> QScript Tutorial Page 1: Mods</a></li>
+<li class="sidebar"><a href="/wiki/QScript/Tutorial/Chapter2.html"> QScript Tutorial Page 2: Getting to work</a></li>
 </ul>
 </li>
 </ul>
@@ -474,641 +504,5 @@ th, td
 <h1>QScript Rundown Page 6</h1>
 
 <p>In Lua, the <code>ExecuteLua()</code> function does what it says. It executes a Lua script, while it may sound simple, a lot comes into that.</p>
-
-<p>I figured that it may be easiest to just go through the function seciton by section.</p>
-
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="n">lua_State</span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">luaL_newstate</span><span class="p">();</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p>Simply create a new lua state.</p></div></div>
-
-<br />
-
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="n">QInstance</span><span class="o">*</span><span class="w"> </span><span class="n">ins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QInstance</span><span class="p">();</span>
-<span class="n">ins</span><span class="o">-&gt;</span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">;</span>
-<span class="n">ins</span><span class="o">-&gt;</span><span class="n">lang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">IBaseScriptingInterface</span><span class="o">*</span><span class="p">)</span><span class="n">current_interface</span><span class="p">;</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p>Create a new QInstance which contains the current language interface and Lua instance</p></div></div>
-
-<br />
-
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="n">luaL_openlibs</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p>Which is:</p>
-
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">lua/linit.c</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">luaL_Reg</span><span class="w"> </span><span class="n">loadedlibs</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">{</span><span class="n">LUA_GNAME</span><span class="p">,</span><span class="w"> </span><span class="n">luaopen_base</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="n">LUA_COLIBNAME</span><span class="p">,</span><span class="w"> </span><span class="n">luaopen_coroutine</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="n">LUA_TABLIBNAME</span><span class="p">,</span><span class="w"> </span><span class="n">luaopen_table</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="n">LUA_STRLIBNAME</span><span class="p">,</span><span class="w"> </span><span class="n">luaopen_string</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="n">LUA_MATHLIBNAME</span><span class="p">,</span><span class="w"> </span><span class="n">luaopen_math</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="n">LUA_UTF8LIBNAME</span><span class="p">,</span><span class="w"> </span><span class="n">luaopen_utf8</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">}</span>
-<span class="p">};</span>
-
-
-<span class="n">LUALIB_API</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">luaL_openlibs</span><span class="w"> </span><span class="p">(</span><span class="n">lua_State</span><span class="w"> </span><span class="o">*</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">luaL_Reg</span><span class="w"> </span><span class="o">*</span><span class="n">lib</span><span class="p">;</span>
-<span class="w">  </span><span class="cm">/* &quot;require&quot; functions from &#39;loadedlibs&#39; and set results to global table */</span>
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loadedlibs</span><span class="p">;</span><span class="w"> </span><span class="n">lib</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">;</span><span class="w"> </span><span class="n">lib</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">luaL_requiref</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">lib</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">lib</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">lua_pop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="cm">/* remove lib */</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p><p>You can notice that it does not include every library, thats because QScript values safety and stability. Some libraries allow for bad things to happen, like unrestricted file access.</p></div></div></p></div></div>
-
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="n">luaL_newmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_OBJECT&quot;</span><span class="p">);</span>
-<span class="n">lua_pushstring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;__index&quot;</span><span class="p">);</span>
-<span class="n">lua_pushcclosure</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">Lua_QScript_Index</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="n">lua_settable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-3</span><span class="p">);</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p>Here the QSCRIPT_OBJECT metatable starts being defined and here is where things start to get a little wild.<br />
-The Lua_QScript_Index function is responsible for getting a value or method from the QObject.</p>
-
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">Lua_QScript_Index</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">QObject</span><span class="o">*</span><span class="w"> </span><span class="n">obj</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">usr</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">usr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_checkudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_OBJECT&quot;</span><span class="p">)))</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usr</span><span class="o">-&gt;</span><span class="n">obj</span><span class="p">;</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tostring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">GetObjectValueIndex</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">GetObjectMethodIndex</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">QFunction</span><span class="o">*</span><span class="w"> </span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QFunction</span><span class="o">*</span><span class="p">)</span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">GetObjectMethod</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
-<span class="w">        </span><span class="n">usr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="p">));</span>
-<span class="w">        </span><span class="n">usr</span><span class="o">-&gt;</span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func</span><span class="p">;</span>
-<span class="w">        </span><span class="n">luaL_setmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_FUNCTION&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">QValue</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">GetObjectValue</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
-<span class="w">    </span><span class="n">QType</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">GetObjectValueType</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
-<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QType_Int</span><span class="p">:</span>
-<span class="w">        </span><span class="n">lua_pushinteger</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">.</span><span class="n">value_int</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QType_String</span><span class="p">:</span>
-<span class="w">        </span><span class="n">lua_pushstring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">.</span><span class="n">value_string</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QType_Float</span><span class="p">:</span>
-<span class="w">        </span><span class="n">lua_pushnumber</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">.</span><span class="n">value_float</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QType_Bool</span><span class="p">:</span>
-<span class="w">        </span><span class="n">lua_pushboolean</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">.</span><span class="n">value_bool</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">default</span><span class="o">:</span>
-<span class="w">        </span><span class="n">lua_pushnil</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p>You can notice that this is just a regular Lua C function. And the way it is pushed to the Lua stack suggests so... You will see why im pointing this out later.<br />
-The function itself first checks the userdata and gets the wanted value name from the second argument.<br />
-It searches first through the values, and then the methods. If any one is found, the appropriate conversion is performed.</p>
-
-<p>Something interesting that happens here is this snippet:</p>
-
-<p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="n">QFunction</span><span class="o">*</span><span class="w"> </span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QFunction</span><span class="o">*</span><span class="p">)</span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">GetObjectMethod</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
-<span class="n">usr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="p">));</span>
-<span class="n">usr</span><span class="o">-&gt;</span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func</span><span class="p">;</span>
-<span class="n">luaL_setmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_FUNCTION&quot;</span><span class="p">);</span>
-</code></pre>
-</div>
-
-<p>You can notice it creating a Lua_Userdata struct with the userdata, why is that?</p>
-
-<p>The Lua_Userdata is more of a union pointer than a struct, this is the definition of it:</p>
-
-<p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Lua_Userdata</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">QObject</span><span class="o">*</span><span class="w"> </span><span class="n">obj</span><span class="p">;</span>
-<span class="w">        </span><span class="n">QClass</span><span class="o">*</span><span class="w"> </span><span class="n">cls</span><span class="p">;</span>
-<span class="w">        </span><span class="n">QClassCreator</span><span class="o">*</span><span class="w"> </span><span class="n">creator</span><span class="p">;</span>
-<span class="w">        </span><span class="n">QFunction</span><span class="o">*</span><span class="w"> </span><span class="n">func</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="p">};</span>
-</code></pre>
-</div>
-
-<p>You can notice that it can store multiple types, and there is not even a separate variable that says which one it is!<br />
-The reason, is that we already have that variable... it's the metatable!</p>
-
-<p><p>We already know if the userdata has a specific metatable, that the pointer stored in the userdata is what we want.</p></div></div></p></div></div>
-
-<br />
-In fact, here are all the Lua functions that get included.
-<br />
-<hr />
-<br />
-
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">Lua_QScript_New_Index</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">QObject</span><span class="o">*</span><span class="w"> </span><span class="n">obj</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">usr</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">usr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_checkudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_OBJECT&quot;</span><span class="p">)))</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usr</span><span class="o">-&gt;</span><span class="n">obj</span><span class="p">;</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tostring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">GetObjectValueIndex</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="n">QType</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">GetObjectValueType</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
-<span class="w">    </span><span class="n">QValue</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
-<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="c1">// TODO : error check the type</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QType_Int</span><span class="p">:</span>
-<span class="w">        </span><span class="n">val</span><span class="p">.</span><span class="n">value_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tointeger</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-<span class="w">        </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">SetObjectValue</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QType_String</span><span class="p">:</span>
-<span class="w">        </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">SetObjectString</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">lua_tostring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">3</span><span class="p">));</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QType_Float</span><span class="p">:</span>
-<span class="w">        </span><span class="n">val</span><span class="p">.</span><span class="n">value_float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tonumber</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-<span class="w">        </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">SetObjectValue</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QType_Bool</span><span class="p">:</span>
-<span class="w">        </span><span class="n">val</span><span class="p">.</span><span class="n">value_bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_toboolean</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-<span class="w">        </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">SetObjectValue</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">default</span><span class="o">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p>This sets a value in the QObject. It checks if the value accessed actually exists in the object, and if so, sets the objects value to the given one.</p></div></div>
-<br />
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">Lua_QScript_Object</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">luaclass</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">luaclass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_checkudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;QSCRIPT_CLASS&quot;</span><span class="p">)))</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="n">QClass</span><span class="o">*</span><span class="w"> </span><span class="n">cls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">luaclass</span><span class="o">-&gt;</span><span class="n">cls</span><span class="p">;</span>
-<span class="w">    </span><span class="n">QObject</span><span class="o">*</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QObject</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">QObject</span><span class="p">)</span><span class="o">+</span><span class="n">cls</span><span class="o">-&gt;</span><span class="n">vars_count</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="n">QValue</span><span class="p">));</span>
-<span class="w">    </span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">cls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cls</span><span class="p">;</span>
-<span class="w">    </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">InitializeObject</span><span class="p">((</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">obj</span><span class="p">);</span>
-<span class="w">    </span><span class="p">((</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="p">)))</span><span class="o">-&gt;</span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="p">;</span>
-<span class="w">    </span><span class="n">luaL_setmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_OBJECT&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p><code>object()</code> createa a new object from the passed class. It initializes it and returns it to Lua.</p></div></div>
-<br />
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">Lua_QScript_Class</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">parentluaclass</span><span class="p">;</span>
-<span class="w">    </span><span class="n">QClass</span><span class="o">*</span><span class="w"> </span><span class="n">cls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_gettop</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TODO : error here</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_gettop</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">parentluaclass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_checkudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_CLASS&quot;</span><span class="p">)))</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TODO : error here</span>
-<span class="w">        </span><span class="n">cls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parentluaclass</span><span class="o">-&gt;</span><span class="n">cls</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">luaclass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="p">));</span>
-<span class="w">    </span><span class="n">luaclass</span><span class="o">-&gt;</span><span class="n">creator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QClassCreator</span><span class="p">();</span>
-<span class="w">    </span><span class="n">QClassCreator</span><span class="o">*</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">luaclass</span><span class="o">-&gt;</span><span class="n">creator</span><span class="p">;</span>
-<span class="w">    </span><span class="n">child</span><span class="o">-&gt;</span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cls</span><span class="p">;</span>
-<span class="w">    </span><span class="n">child</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="n">luaL_setmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_CLASS_CREATOR&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p><code>class()</code> creates a new class creator. It takes an optional class as the parent class and returns a new QClassCreator struct.</p></div></div>
-<br />
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">Lua_QScript_Class_Creator_NewIndex</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">luaclass</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">luaclass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_checkudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_CLASS_CREATOR&quot;</span><span class="p">)))</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TODO : error here</span>
-<span class="w">    </span><span class="n">QClassCreator</span><span class="o">*</span><span class="w"> </span><span class="n">cls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">luaclass</span><span class="o">-&gt;</span><span class="n">creator</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isfunction</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">QClassCreatorMethod</span><span class="o">*</span><span class="w"> </span><span class="n">meth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QClassCreatorMethod</span><span class="o">*</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">QClassCreatorMethod</span><span class="p">));</span>
-<span class="w">        </span><span class="n">lua_pushvalue</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-<span class="w">        </span><span class="n">QCallback</span><span class="o">*</span><span class="w"> </span><span class="n">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QCallback</span><span class="p">();</span>
-<span class="w">        </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_ref</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">LUA_REGISTRYINDEX</span><span class="p">);</span>
-<span class="w">        </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">lang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_interface</span><span class="p">;</span>
-<span class="w">        </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">;</span>
-<span class="w">        </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">meth</span><span class="o">-&gt;</span><span class="n">scripting_func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">callback</span><span class="p">;</span>
-<span class="w">        </span><span class="n">meth</span><span class="o">-&gt;</span><span class="n">is_scripting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tostring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="w">        </span><span class="n">meth</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">char</span><span class="p">[</span><span class="n">strlen</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
-<span class="w">        </span><span class="n">strcpy</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">meth</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
-<span class="w">        </span><span class="n">meth</span><span class="o">-&gt;</span><span class="n">is_private</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">        </span><span class="n">meth</span><span class="o">-&gt;</span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">meth</span><span class="o">-&gt;</span><span class="n">params_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">cls</span><span class="o">-&gt;</span><span class="n">methods</span><span class="p">.</span><span class="n">AddToTail</span><span class="p">(</span><span class="n">meth</span><span class="p">);</span>
-<span class="w">        </span><span class="n">lua_pop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">QVar</span><span class="o">*</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QVar</span><span class="p">();</span>
-<span class="w">        </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">is_private</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tostring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="w">        </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">char</span><span class="p">[</span><span class="n">strlen</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
-<span class="w">        </span><span class="n">strcpy</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">var</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">name</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isstring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">))</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_String</span><span class="p">;</span>
-<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tolstring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">            </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">Qlog2</span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">str</span><span class="p">));</span>
-<span class="w">            </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">defaultval</span><span class="p">.</span><span class="n">value_modifiable_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">var</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">            </span><span class="n">strcpy</span><span class="p">(</span><span class="n">var</span><span class="o">-&gt;</span><span class="n">defaultval</span><span class="p">.</span><span class="n">value_modifiable_string</span><span class="p">,</span><span class="w"> </span><span class="n">str</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isinteger</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">))</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_Int</span><span class="p">;</span>
-<span class="w">            </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">defaultval</span><span class="p">.</span><span class="n">value_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tointeger</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isnumber</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">))</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_Float</span><span class="p">;</span>
-<span class="w">            </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">defaultval</span><span class="p">.</span><span class="n">value_float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tonumber</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isboolean</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">))</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_Bool</span><span class="p">;</span>
-<span class="w">            </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">defaultval</span><span class="p">.</span><span class="n">value_bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">bool</span><span class="p">)</span><span class="n">lua_toboolean</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">var</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_None</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">cls</span><span class="o">-&gt;</span><span class="n">vars</span><span class="p">.</span><span class="n">AddToTail</span><span class="p">(</span><span class="n">var</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<p>Creates a variable or function in the <code>QClassCreator</code> struct.</p></div></div>
-<br />
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">Lua_QScript_Finish</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">luaclass</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">luaclass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_checkudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_CLASS_CREATOR&quot;</span><span class="p">)))</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TODO : error here</span>
-<span class="w">    </span><span class="n">QClassCreator</span><span class="o">*</span><span class="w"> </span><span class="n">cls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">luaclass</span><span class="o">-&gt;</span><span class="n">creator</span><span class="p">;</span>
-<span class="w">    </span><span class="n">luaclass</span><span class="o">-&gt;</span><span class="n">cls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QClass</span><span class="o">*</span><span class="p">)</span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">FinishClass</span><span class="p">((</span><span class="n">QScriptClassCreator</span><span class="p">)</span><span class="n">cls</span><span class="p">);</span>
-<span class="w">    </span><span class="n">luaL_setmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_CLASS&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<div class="framed"><div class="framedinside"><p>This page is a stub. You should expand it by making a pull request on our <a href="https://github.com/SourceBoxGame/wiki">GitHub repository</a></p></div></div></div></div>
-
-<p><br /></p>
-
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">Lua_QScript_Export</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">lua_Debug</span><span class="w"> </span><span class="n">dbg</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_getstack</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dbg</span><span class="p">))</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TODO : error here, function can only be executed in global context</span>
-<span class="w">    </span><span class="n">QInstance</span><span class="o">*</span><span class="w"> </span><span class="n">ins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QInstance</span><span class="o">*</span><span class="p">)</span><span class="n">lua_touserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">lua_upvalueindex</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
-<span class="w">    </span><span class="n">QFunction</span><span class="o">*</span><span class="w"> </span><span class="n">func</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">usr</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">usr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_testudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_OBJECT&quot;</span><span class="p">))</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">lua_pushglobaltable</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
-<span class="w">        </span><span class="n">lua_pushnil</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">lua_next</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">-2</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">usr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_testudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_OBJECT&quot;</span><span class="p">)))</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">QExport</span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QExport</span><span class="p">();</span>
-<span class="w">                </span><span class="n">exp</span><span class="o">-&gt;</span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usr</span><span class="o">-&gt;</span><span class="n">obj</span><span class="p">;</span>
-<span class="w">                </span><span class="n">exp</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QExport_Object</span><span class="p">;</span>
-<span class="w">                </span><span class="n">exp</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tostring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-2</span><span class="p">);</span>
-<span class="w">                </span><span class="n">ins</span><span class="o">-&gt;</span><span class="n">exports</span><span class="p">.</span><span class="n">AddToTail</span><span class="p">(</span><span class="n">exp</span><span class="p">);</span>
-<span class="w">                </span><span class="n">lua_pop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="n">lua_pop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="c1">// TODO : error here, must be a global variable</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">usr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_testudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_CLASS&quot;</span><span class="p">))</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">lua_pushglobaltable</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
-<span class="w">        </span><span class="n">lua_pushnil</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">lua_next</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-2</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">usr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_testudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_CLASS&quot;</span><span class="p">)))</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">QExport</span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QExport</span><span class="p">();</span>
-<span class="w">                </span><span class="n">exp</span><span class="o">-&gt;</span><span class="n">cls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usr</span><span class="o">-&gt;</span><span class="n">cls</span><span class="p">;</span>
-<span class="w">                </span><span class="n">exp</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QExport_Class</span><span class="p">;</span>
-<span class="w">                </span><span class="n">exp</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tostring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-2</span><span class="p">);</span>
-<span class="w">                </span><span class="n">ins</span><span class="o">-&gt;</span><span class="n">exports</span><span class="p">.</span><span class="n">AddToTail</span><span class="p">(</span><span class="n">exp</span><span class="p">);</span>
-<span class="w">                </span><span class="n">lua_pop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="n">lua_pop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="c1">// TODO : error here, must be a global variable</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isfunction</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">lua_pushglobaltable</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
-<span class="w">        </span><span class="n">lua_pushnil</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">lua_next</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-2</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isfunction</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">lua_rawequal</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QFunction</span><span class="p">();</span>
-<span class="w">                </span><span class="n">func</span><span class="o">-&gt;</span><span class="n">always_zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">                </span><span class="n">func</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QFunction_Scripting</span><span class="p">;</span>
-<span class="w">                </span><span class="n">QCallback</span><span class="o">*</span><span class="w"> </span><span class="n">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QCallback</span><span class="p">();</span>
-<span class="w">                </span><span class="n">lua_pushvalue</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">                </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_ref</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">LUA_REGISTRYINDEX</span><span class="p">);</span>
-<span class="w">                </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">;</span>
-<span class="w">                </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">lang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_interface</span><span class="p">;</span>
-<span class="w">                </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">                </span><span class="n">func</span><span class="o">-&gt;</span><span class="n">func_scripting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">callback</span><span class="p">;</span>
-<span class="w">                </span><span class="n">QExport</span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">QExport</span><span class="p">();</span>
-<span class="w">                </span><span class="n">exp</span><span class="o">-&gt;</span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func</span><span class="p">;</span>
-<span class="w">                </span><span class="n">exp</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QExport_Function</span><span class="p">;</span>
-<span class="w">                </span><span class="n">exp</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tostring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-2</span><span class="p">);</span>
-<span class="w">                </span><span class="n">ins</span><span class="o">-&gt;</span><span class="n">exports</span><span class="p">.</span><span class="n">AddToTail</span><span class="p">(</span><span class="n">exp</span><span class="p">);</span>
-<span class="w">                </span><span class="n">lua_pop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="n">lua_pop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="c1">// TODO : error here, must be a global variable</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="c1">// TODO : error here, must be a QObject, QClass or QFunction</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<div class="framed"><div class="framedinside"><p>This page is a stub. You should expand it by making a pull request on our <a href="https://github.com/SourceBoxGame/wiki">GitHub repository</a></p></div></div></div></div>
-
-<p><br /></p>
-
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">Lua_QScript_Import</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">lua_Debug</span><span class="w"> </span><span class="n">dbg</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_getstack</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dbg</span><span class="p">))</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TODO : error here, function can only be executed in global context</span>
-<span class="w">    </span><span class="n">QMod</span><span class="o">*</span><span class="w"> </span><span class="n">mod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QMod</span><span class="o">*</span><span class="p">)</span><span class="n">lua_touserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">lua_upvalueindex</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">luaL_checkstring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TODO : error here, string is required</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">IsValidPath</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TODO : error here, nuh uh</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mod</span><span class="o">-&gt;</span><span class="n">instances</span><span class="p">.</span><span class="n">Defined</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">mod</span><span class="o">-&gt;</span><span class="n">instances</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">g_pQScript</span><span class="o">-&gt;</span><span class="n">LoadFile</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">QInstance</span><span class="o">*</span><span class="w"> </span><span class="n">inst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mod</span><span class="o">-&gt;</span><span class="n">instances</span><span class="p">[</span><span class="n">path</span><span class="p">];</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">inst</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TODO : error here, most likely a import loop or bad path</span>
-<span class="w">    </span><span class="n">CUtlVector</span><span class="o">&lt;</span><span class="n">QExport</span><span class="o">*&gt;*</span><span class="w"> </span><span class="n">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mod</span><span class="o">-&gt;</span><span class="n">instances</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">exports</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">ud</span><span class="p">;</span>
-<span class="w">    </span><span class="n">lua_createtable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">exports</span><span class="o">-&gt;</span><span class="n">Count</span><span class="p">());</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">exports</span><span class="o">-&gt;</span><span class="n">Count</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">QExport</span><span class="o">*</span><span class="w"> </span><span class="n">qexport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exports</span><span class="o">-&gt;</span><span class="n">Element</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-<span class="w">        </span><span class="n">lua_pushstring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">qexport</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">);</span>
-<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">qexport</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">QExport_Object</span><span class="p">:</span>
-<span class="w">            </span><span class="n">ud</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="p">));</span>
-<span class="w">            </span><span class="n">ud</span><span class="o">-&gt;</span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qexport</span><span class="o">-&gt;</span><span class="n">obj</span><span class="p">;</span>
-<span class="w">            </span><span class="n">luaL_setmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_OBJECT&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="k">break</span><span class="p">;</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">QExport_Class</span><span class="p">:</span>
-<span class="w">            </span><span class="n">ud</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="p">));</span>
-<span class="w">            </span><span class="n">ud</span><span class="o">-&gt;</span><span class="n">cls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qexport</span><span class="o">-&gt;</span><span class="n">cls</span><span class="p">;</span>
-<span class="w">            </span><span class="n">luaL_setmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_CLASS&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="k">break</span><span class="p">;</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">QExport_Function</span><span class="p">:</span>
-<span class="w">            </span><span class="n">ud</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="p">));</span>
-<span class="w">            </span><span class="n">ud</span><span class="o">-&gt;</span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qexport</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">;</span>
-<span class="w">            </span><span class="n">luaL_setmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_FUNCTION&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="k">break</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">lua_settable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">-3</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<div class="framed"><div class="framedinside"><p>This page is a stub. You should expand it by making a pull request on our <a href="https://github.com/SourceBoxGame/wiki">GitHub repository</a></p></div></div></div></div>
-
-<p><br /></p>
-
-<div class="inlineframed"><div class="inlineframedinside"><p><small style="position:relative; top:8px; margin:0px;">luainterface/luainterface.cpp</small></p>
-
-<div class="codehilite">
-<pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">Lua_QScript_Function_Call</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">usr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_checkudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;QSCRIPT_FUNCTION&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">usr</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="n">QFunction</span><span class="o">*</span><span class="w"> </span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">usr</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">func</span><span class="o">-&gt;</span><span class="n">always_zero</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="n">QArgs</span><span class="o">*</span><span class="w"> </span><span class="n">args</span><span class="p">;</span>
-<span class="w">    </span><span class="n">QReturn</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
-<span class="w">    </span><span class="n">lua_remove</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_gettop</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
-<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">func</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QFunction_Module</span><span class="p">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">LuaActualCallback</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">func</span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QFunction_Native</span><span class="p">:</span>
-<span class="w">        </span><span class="n">Warning</span><span class="p">(</span><span class="s">&quot;Calling QFunction_Native is unsuppported in Lua yet (you can add it if you want at line %i in file luainterface.cpp)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">__LINE__</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QFunction_Scripting</span><span class="p">:</span>
-<span class="w">        </span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QArgs</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">QArg</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">QArgs</span><span class="p">));</span>
-<span class="w">        </span><span class="n">args</span><span class="o">-&gt;</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
-<span class="w">        </span><span class="n">args</span><span class="o">-&gt;</span><span class="n">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="w"> </span><span class="n">nusr</span><span class="p">;</span>
-<span class="w">            </span><span class="k">union</span><span class="w"> </span><span class="nc">QValue</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isinteger</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">args</span><span class="o">-&gt;</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_Int</span><span class="p">;</span>
-<span class="w">                </span><span class="n">val</span><span class="p">.</span><span class="n">value_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tointeger</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isnumber</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">args</span><span class="o">-&gt;</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_Float</span><span class="p">;</span>
-<span class="w">                </span><span class="n">val</span><span class="p">.</span><span class="n">value_float</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">lua_tonumber</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isboolean</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">args</span><span class="o">-&gt;</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_Bool</span><span class="p">;</span>
-<span class="w">                </span><span class="n">val</span><span class="p">.</span><span class="n">value_bool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_toboolean</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isstring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">args</span><span class="o">-&gt;</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_String</span><span class="p">;</span>
-<span class="w">                </span><span class="n">val</span><span class="p">.</span><span class="n">value_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lua_tolstring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lua_isfunction</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">args</span><span class="o">-&gt;</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_Function</span><span class="p">;</span>
-<span class="w">                </span><span class="n">QCallback</span><span class="o">*</span><span class="w"> </span><span class="n">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QCallback</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">QCallback</span><span class="p">));</span>
-<span class="w">                </span><span class="n">lua_pushvalue</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">                </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_ref</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">LUA_REGISTRYINDEX</span><span class="p">);</span>
-<span class="w">                </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">lang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_interface</span><span class="p">;</span>
-<span class="w">                </span><span class="n">callback</span><span class="o">-&gt;</span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">;</span>
-<span class="w">                </span><span class="n">QFunction</span><span class="o">*</span><span class="w"> </span><span class="n">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QFunction</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">QFunction</span><span class="p">));</span>
-<span class="w">                </span><span class="n">func</span><span class="o">-&gt;</span><span class="n">always_zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">                </span><span class="n">func</span><span class="o">-&gt;</span><span class="n">func_scripting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">callback</span><span class="p">;</span>
-<span class="w">                </span><span class="n">func</span><span class="o">-&gt;</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QFunction_Scripting</span><span class="p">;</span>
-<span class="w">                </span><span class="n">val</span><span class="p">.</span><span class="n">value_function</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QScriptFunction</span><span class="p">)</span><span class="n">func</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nusr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">luaL_testudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_OBJECT&quot;</span><span class="p">))</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">args</span><span class="o">-&gt;</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QType_Object</span><span class="p">;</span>
-<span class="w">                </span><span class="n">val</span><span class="p">.</span><span class="n">value_object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QScriptObject</span><span class="p">)</span><span class="n">nusr</span><span class="o">-&gt;</span><span class="n">obj</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="n">args</span><span class="o">-&gt;</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
-<span class="w">            </span><span class="k">continue</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">QReturn</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">IBaseScriptingInterface</span><span class="o">*</span><span class="p">)</span><span class="n">func</span><span class="o">-&gt;</span><span class="n">func_scripting</span><span class="o">-&gt;</span><span class="n">lang</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">CallCallback</span><span class="p">(</span><span class="n">func</span><span class="o">-&gt;</span><span class="n">func_scripting</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span>
-<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="p">.</span><span class="n">type</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">QType_Bool</span><span class="p">:</span>
-<span class="w">            </span><span class="n">lua_pushboolean</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">value_bool</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">QType_Float</span><span class="p">:</span>
-<span class="w">            </span><span class="n">lua_pushnumber</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">value_float</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">QType_String</span><span class="p">:</span>
-<span class="w">            </span><span class="n">lua_pushstring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">value_string</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">QType_Int</span><span class="p">:</span>
-<span class="w">            </span><span class="n">lua_pushinteger</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">value_int</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">QType_Object</span><span class="p">:</span>
-<span class="w">            </span><span class="p">((</span><span class="n">Lua_Userdata</span><span class="o">*</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">Lua_Userdata</span><span class="p">)))</span><span class="o">-&gt;</span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">QObject</span><span class="o">*</span><span class="p">)</span><span class="n">ret</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">value_object</span><span class="p">;</span>
-<span class="w">            </span><span class="n">luaL_setmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;QSCRIPT_OBJECT&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="k">default</span><span class="o">:</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">QFunction_Void</span><span class="p">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-</div>
-
-<hr />
-
-<div class="framed"><div class="framedinside"><p>This page is a stub. You should expand it by making a pull request on our <a href="https://github.com/SourceBoxGame/wiki">GitHub repository</a></p></div></div></div></div>
 
 </div>
