@@ -83,32 +83,31 @@ def ConvertStrToHtml(rawmarkdown : str):
                 dollarsnippet = rawmarkdown[i+2:]
                 if dollarsnippet.startswith("SMALL"):
                     dollarname = "SMALL"
-                    #closelist.append("SMALL")
-                    #rawmarkdown = rawmarkdown[:i]+"<small style=\"position:relative; top:8px; margin:0px;\">"+rawmarkdown[i+7:]
                     i+=5
                 elif dollarsnippet.startswith("FRAME"):
                     dollarname = "FRAME"
-                    #closelist.append("FRAME")
-                    #rawmarkdown = rawmarkdown[:i]+"<div class=\"framed\"markdown=\"1\"><div class=\"framedinside\" markdown=\"1\">"+rawmarkdown[i+7:]
                     i+=5
                 elif dollarsnippet.startswith("INLINEFRAME"):
                     dollarname = "INLINEFRAME"
-                    #closelist.append("INLINEFRAME")
-                    #rawmarkdown = rawmarkdown[:i]+"<div class=\"inlineframed\" markdown=\"1\"><div class=\"inlineframedinside\" markdown=\"1\">"+rawmarkdown[i+13:]
                     i+=11
+                elif dollarsnippet.startswith("COMMENT"):
+                    dollarname = "COMMENT"
+                    i+=7
                 beginningdollar = i+2
             indentlevel += 1
             i+=2
         elif rawmarkdown[i:i+2] == "_$":
             indentlevel -= 1
             if indentlevel == 0 and beginningdollar != -1:
-                snippet = ConvertStrToHtml(rawmarkdown[beginningdollar:i].strip()).strip()
+                snippet = ""
+                if dollarname != "COMMENT":
+                    snippet = ConvertStrToHtml(rawmarkdown[beginningdollar:i].strip()).strip()
                 if dollarname == "SMALL":
                     snippet = "<small style=\"position:relative; top:8px; margin:0px;\">"+snippet.strip().replace("<p>","").replace("</p>","")+"</small>"
                 elif dollarname == "FRAME":
-                    snippet = "<div class=\"framed\"markdown=\"1\"><div class=\"framedinside\" markdown=\"1\">"+snippet+"</div></div>"
+                    snippet = "<div class=\"framed\"><div class=\"framedinside\">"+snippet+"</div></div>"
                 elif dollarname == "INLINEFRAME":
-                    snippet = "<div class=\"inlineframed\"markdown=\"1\"><div class=\"inlineframedinside\" markdown=\"1\">"+snippet+"</div></div>"
+                    snippet = "<div class=\"inlineframed\"><div class=\"inlineframedinside\">"+snippet+"</div></div>"
                 rawmarkdown = rawmarkdown[:tocut]+snippet+rawmarkdown[i+2:]
                 beginningdollar = -1
                 i = tocut+len(snippet)-3
@@ -123,13 +122,23 @@ def ConvertStrToHtml(rawmarkdown : str):
         else:
             foundpath = FindFile(link[2:-2]+".md").replace(".md","").replace("\\","/")
             rawmarkdown = rawmarkdown.replace(link, "<a href=\"/wiki/"+foundpath+".html\">"+foundpath.split("/")[-1]+"</a>")
-    embeds = re.findall(r'\{\{[^\{^\}]+\}\}', rawmarkdown)
+    embeds = re.findall(r'\{\{[^\{\}]+?\}\}', rawmarkdown,re.MULTILINE)
     for embed in embeds:
-        if os.path.exists(os.path.join(src,embed[2:-2]+".embed.md")):
-            rawmarkdown = rawmarkdown.replace(embed, ConvertToHtml(src+embed[2:-2]+".embed.md"))
+        path_and_args = embed[2:-2].split("|")
+        path = path_and_args[0]
+        if os.path.exists(os.path.join(src,path+".embed.md")):
+            path = src+path+".embed.md"
         else:
-            foundpath = FindFile(embed[2:-2]+".embed.md").replace("\\","/")
-            rawmarkdown = rawmarkdown.replace(embed, ConvertToHtml(src+foundpath))
+            foundpath = FindFile(path+".embed.md").replace("\\","/")
+            path = src+foundpath
+        with open(path,"r") as f:
+            embedcontent = f.read().replace("\r\n","\n").replace("\\}","}")
+        if len(path_and_args) > 1:
+            i = 1
+            for arg in path_and_args[1:]:
+                embedcontent = embedcontent.replace("$"+str(i)+"$", arg)
+                i+=1
+        rawmarkdown = rawmarkdown.replace(embed, ConvertStrToHtml(embedcontent))
     links = re.findall(r'\[[^\[^\]]+\]\[[^\[^\]]+\]',rawmarkdown)
     for link in links:
         name = link[1:].split("]",1)[0]
